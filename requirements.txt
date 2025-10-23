@@ -1,0 +1,28 @@
+# Job Scam Detection System Requirements
+# Core dependencies for LLM-based scam detection
+
+# Google Gemini AI
+google-generativeai>=0.3.0
+
+# Data processing and analysis
+pandas>=1.5.0
+numpy>=1.24.0
+
+# Visualization
+matplotlib>=3.6.0
+seaborn>=0.12.0
+
+# Optional: Enhanced data processing
+scikit-learn>=1.2.0
+
+# Optional: Web interface (if building web app)
+# flask>=2.3.0
+# streamlit>=1.25.0
+
+# Development and testing
+pytest>=7.0.0
+jupyter>=1.0.0
+
+# Optional: Advanced NLP
+# nltk>=3.8.0
+# spacy>=3.6.0

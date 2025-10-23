@@ -1,0 +1,65 @@
+{
+  "summary": {
+    "total_complaints": 26,
+    "high_risk_complaints": 1,
+    "high_risk_percentage": 3.8461538461538463,
+    "average_risk_score": 56.53846153846154,
+    "median_risk_score": 55.0
+  },
+  "risk_distribution": {
+    "49": 1,
+    "50": 6,
+    "52": 1,
+    "54": 1,
+    "55": 6,
+    "60": 7,
+    "65": 3,
+    "70": 1
+  },
+  "top_red_flags": {
+    "immediately": 8,
+    "zelle": 4,
+    "mobile deposit": 4,
+    "send money": 3,
+    "fake check": 3,
+    "text message": 2,
+    "check bounced": 2,
+    "money order": 2,
+    "paypal": 1,
+    "right away": 1
+  },
+  "scam_type_distribution": {
+    "Job Offer/Employment Scam combined with an Advance Fee/Task Scam and Impersonation. The scam started as a fake job offer (employment scam) using the identity of a real company (impersonation). The core financial loss occurred when the victim was manipulated into sending money, typical of an advance fee scam where funds are requested for 'equipment,' 'training,' 'fees,' or as part of a 'task' where the victim is told they need to 'invest' to unlock more significant earnings or withdraw funds.": 1,
+    "Fake Check / Employment Scam (Hybrid)": 1,
+    "Fake Check / Overpayment Scam (often combined with an Employment Scam or Personal Assistant Scam)": 1,
+    "Fake Check / Overpayment Scam (Job Scam Variant). The scammer sends a fraudulent check for an amount greater than what is supposedly needed (for equipment), instructs the victim to deposit it, and then demands a portion of the money be sent to a third party before the victim's bank realizes the original check was bad and reverses the funds.": 1,
+    "Fake Check / Advance Fee Scam (Job Offer Variation)": 1,
+    "Fake Check / Overpayment Scam combined with an Employment Scam. The scammer sends a fraudulent check for a higher amount than needed, instructs the victim to deposit it, and then demands a portion of the money be sent elsewhere before the fake check is discovered. The victim is then left responsible for the funds transferred.": 1,
+    "Employment Scam / Fake Check Scam / Advance Fee Scam. The scammers posed as a legitimate employer to onboard the victim, used a fraudulent check to provide 'funds,' and then instructed the victim to forward a portion of those funds to a third party before the check cleared, resulting in the victim losing their own money.": 1,
+    "Fake Check Scam / Overpayment Scam / Work-From-Home Scam. The core mechanism is a fraudulent check used to trick the victim into sending real money before the fake check bounces.": 1,
+    "Fake Check / Money Mule Scam. The victim was recruited as an unwitting intermediary (money mule) to transfer fraudulently obtained funds. The funds initially deposited into the victim's account were fraudulent (e.g., fake check, stolen funds, reversed transfer). The victim sent their own money (or money from their bank for which they are liable) via Money Gram before the fraudulent deposit was detected and reversed by the bank.": 1,
+    "This is a sophisticated combination of an Employment/Work-From-Home Scam, a Fake Check Scam, and an Advance Fee Scam, with a strong element of Identity Theft. The scammers pose as a legitimate employer, send a fraudulent check for 'equipment', and then trick the victim into sending their own money to a 'vendor' before the fake check bounces. Simultaneously, they collect personal identification for identity theft.": 1,
+    "Fake Check / Job Overpayment Scam (Equipment Variant)": 1,
+    "Fake Check / Job Offer Scam. This is a classic fake check scam where the scammer sends a fraudulent check for a higher amount than needed, instructs the victim to deposit it, and then demands a portion of the money be sent back (or to 'vendors') via an irreversible method (like Venmo) before the bank realizes the check is bad. The 'job offer' acts as the lure.": 1,
+    "Fake Check Scam / Overpayment Scam (Work-from-Home Variant)": 1,
+    "Fake Check Employment Scam (also known as Work-From-Home Scam or Overpayment Scam). The scammer sends a fraudulent check, often for an amount greater than what's 'owed', and instructs the victim to deposit it, then send a portion of the money (or the 'overpayment') back to them or a third party before the fake check is discovered.": 1,
+    "Fake Check / Employment Scam (Advance Fee Variant)": 1,
+    "Fake Check Scam (also an Advance Fee component)": 1,
+    "Employment Scam combined with a Fake Check Scam and an Advance Fee Scam. The 'advance fee' was disguised as payments for work equipment, which the victim was instructed to make using funds from the fraudulent checks.": 1,
+    "Fake Check Employment Scam (also known as Work-from-Home Scam or Overpayment Scam). The job offer is a pretext to get the victim to deposit a fraudulent check and then send their own 'good' money to the scammers before the fake check bounces.": 1,
+    "Fake Check Scam / Employment Scam": 1,
+    "Fake Check / Overpayment Scam (disguised as a job offer). The scammer sends a fraudulent check (often for more than the agreed amount, or for a supposed 'start-up' cost), instructs the victim to deposit it and then immediately wire back or send a portion of the funds via irreversible methods (money order, wire transfer, gift card) before the fake check is identified and bounces, leaving the victim responsible for the entire amount sent.": 1,
+    "Fake Check Scam / Employment Scam / Advance Fee Scam": 1,
+    "Fake Check Scam / Overpayment Scam (a form of Advance Fee Fraud). The core mechanism involves sending a fraudulent check for an amount exceeding the agreed-upon payment, then instructing the victim to send back the 'overpaid' difference before the fake check is identified by the bank.": 1,
+    "Fake Check / Overpayment Scam (often an Employment/Work-From-Home Scam variant). The scam leverages the desire for employment to trick victims into depositing a fraudulent check and then sending 'excess' funds to the scammer via an irreversible payment method.": 1,
+    "Fake Check Scam / Advance Fee Scam (Job/Internship Scam Variant)": 1,
+    "Employment Scam / Fake Check Scam / Advance Fee Scam. The core mechanism is a fake check scam, where the victim is instructed to deposit a fraudulent check, and then send a portion of the funds (from their own cleared money, or by using personal savings under pressure) to a third party (often the scammer themselves, or a money mule) before the bank realizes the check is fake. This is often disguised as a work-from-home or internship opportunity requiring the victim to act as a 'purchasing agent' or 'personal assistant'.": 1,
+    "Employment Scam / Fake Check Scam / Advance Fee Scam. The scammers posed as a legitimate company to 'hire' the victim, sent a fraudulent check (fake check scam), and then instructed the victim to send a portion of that money to a 'vendor' using an irreversible method like Zelle (advance fee scam).": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 7212558,
+      "overall_risk_score": 70
+    }
+  ]
+}

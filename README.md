@@ -2,6 +2,8 @@
 
 A comprehensive AI-powered system for detecting job scams using Google Gemini LLM. This system analyzes consumer complaints and job-related messages to identify potential scam patterns and provide risk assessments.
 
+## Read TO_DO.md for the unsolved tasks.
+
 ## Features
 
 - **AI-Powered Analysis**: Uses Google Gemini to analyze text for scam indicators

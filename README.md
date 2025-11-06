@@ -6,23 +6,37 @@ A comprehensive AI-powered system for detecting job scams using Google Gemini LL
 
 ## Features
 
-- **AI-Powered Analysis**: Uses Google Gemini to analyze text for scam indicators
-- **Rule-Based Detection**: Implements pattern matching for common scam red flags
-- **Risk Scoring**: Provides 0-100 risk scores for each complaint
-- **Comprehensive Reporting**: Generates detailed analysis reports
+- **AI-Powered Analysis**: Uses Google Gemini LLM to analyze text for scam indicators
+- **Prompt Engineering**: Sophisticated prompt design for accurate scam detection
+- **Risk Scoring**: Provides 0-100 risk scores based on Gemini's scam probability
+- **Comprehensive Reporting**: Generates detailed analysis reports with insights
 - **Visualization**: Creates charts and graphs to visualize scam patterns
-- **Batch Processing**: Analyzes large datasets of complaints
+- **Batch Processing**: Analyzes large datasets of complaints efficiently
 
 ## Installation
 
 1. **Clone or download the project files**
 
-2. **Install Python dependencies:**
+2. **Create and activate a virtual environment (can skip but recommended):**
+   ```bash
+   # Create virtual environment
+   python3 -m venv venv
+   
+   # Activate it (macOS/Linux)
+   source venv/bin/activate
+   
+   # Or on Windows
+   venv\Scripts\activate
+   ```
+   
+   You should see `(venv)` in your terminal prompt when activated.
+
+3. **Install Python dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Get Google Gemini API Key:**
+4. **Get Google Gemini API Key:**
    - Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
    - Create a new API key
    - Set it as an environment variable:
@@ -37,45 +51,66 @@ A comprehensive AI-powered system for detecting job scams using Google Gemini LL
 Run the main analysis script on your dataset:
 
 ```bash
-python job_scam_detector.py
+python main.py --input "data/data-ashley(Sheet1).csv"
+```
+
+**With custom options:**
+```bash
+# Custom output directory
+python main.py --input "data/data-ashley(Sheet1).csv" --output-dir detect_res
+
+# Custom filenames
+python main.py --input "data/data-ashley(Sheet1).csv" --results-file ashley_results.csv --report-file ashley_report.json
 ```
 
 This will:
-- Analyze all complaints in the CSV file
-- Generate risk scores and scam classifications
-- Save results to `scam_analysis_results.csv`
-- Create a summary report in `scam_analysis_report.json`
+- Analyze all complaints in the CSV file using Gemini AI
+- Generate risk scores (0-100) based on scam probability
+- Save results to `detect_res/scam_analysis_results.csv`
+- Create a summary report in `detect_res/scam_analysis_report.json`
 
-### Visualization
+**Note**: All analysis results are saved in the `detect_res/` folder by default.
 
-Generate visualizations of the analysis results:
+### Generate Visualizations
+
+After running the analysis, generate visualizations:
 
 ```bash
 python visualize_results.py
 ```
 
-This creates charts showing:
+This creates charts in the `visualizations/` folder showing:
 - Risk score distributions
-- Red flag patterns
+- Red flag patterns (from Gemini analysis)
 - Scam type breakdowns
-- Correlation analysis
+- Risk score vs text length correlation
+- Comprehensive dashboard
+
+**Important**: You must run the analysis first (`main.py`) before generating visualizations, as the visualization script reads from the results files.
 
 ### Custom Analysis
 
 You can also use the detector programmatically:
 
 ```python
-from job_scam_detector import JobScamDetector
+# Recommended: Use the new modular package
+from scam_detector import JobScamDetector
+
+# Or use the legacy import (backward compatible)
+# from job_scam_detector import JobScamDetector
 
 # Initialize detector
 detector = JobScamDetector(api_key="your_api_key")
 
 # Analyze a single complaint
 result = detector.analyze_complaint("Your complaint text here")
-print(f"Risk Score: {result['overall_risk_score']}")
+print(f"Risk Score: {result['risk_score']}")
 
-# Analyze a dataset
-results = detector.analyze_dataset("your_data.csv", "output.csv")
+# Analyze a dataset (results saved to detect_res/ by default)
+results = detector.analyze_dataset("your_data.csv")
+
+# Generate report (saved to detect_res/ by default)
+report = detector.generate_report(results)
 ```
 
 ## Data Format
@@ -86,39 +121,18 @@ The system expects CSV files with the following columns:
 
 ## Scam Detection Features
 
-### Rule-Based Indicators
+### AI-Powered Analysis
 
-The system looks for these red flags:
+The system uses Google Gemini LLM with sophisticated prompt engineering to analyze complaints. Gemini provides:
 
-**Financial Red Flags:**
-- Fake check mentions
-- Money transfer requests
-- Equipment purchase requirements
-- Advance payment demands
+- **Scam Probability (0-100)**: Direct assessment of scam likelihood
+- **Red Flags**: Contextual indicators identified by AI analysis
+- **Financial Risk Assessment**: Low/Medium/High risk levels
+- **Scam Type Classification**: Specific scam categories (e.g., fake check, advance fee, impersonation)
+- **Victim Vulnerability Analysis**: Profile of victim characteristics
+- **Prevention Recommendations**: Actionable advice for avoiding similar scams
 
-**Urgency Indicators:**
-- Immediate action required
-- Time pressure tactics
-- Deadline threats
-
-**Communication Red Flags:**
-- Email-only communication
-- No phone interviews
-- Messaging app usage
-
-**Job Red Flags:**
-- No experience required
-- Unrealistic promises
-- Vague job descriptions
-
-### AI Analysis
-
-Gemini AI provides:
-- Scam probability (0-100)
-- Financial risk assessment
-- Scam type classification
-- Victim vulnerability analysis
-- Prevention recommendations
+The system relies entirely on AI analysis rather than simple keyword matching, providing more accurate and nuanced detection.
 
 ## Output Files
 
@@ -128,12 +142,14 @@ Gemini AI provides:
 
 ## Risk Scoring
 
-The system combines rule-based and AI analysis to generate risk scores:
+The risk score is directly based on Gemini's `scam_probability` (0-100), providing a clear assessment:
 
 - **0-30**: Low risk (likely legitimate)
 - **31-60**: Medium risk (suspicious, needs review)
 - **61-80**: High risk (likely scam)
 - **81-100**: Very high risk (definite scam)
+
+The score reflects Gemini's confidence in identifying scams, making it a reliable indicator of risk level.
 
 ## Example Results
 
@@ -154,14 +170,82 @@ The system uses Google Gemini API. Monitor your usage:
 - Free tier: 15 requests per minute
 - Paid tier: Higher limits available
 
+## Testing
+
+### Quick Test
+
+Test with the included sample data:
+
+```bash
+# Make sure virtual environment is activated
+source venv/bin/activate  # macOS/Linux
+# or
+venv\Scripts\activate  # Windows
+
+# Set API key
+export GEMINI_API_KEY="your_api_key_here"
+
+# Step 1: Run analysis
+python main.py --input "data/data-ashley(Sheet1).csv"
+
+# Step 2: Generate visualizations (after analysis completes)
+python visualize_results.py
+```
+
+The visualizations will be saved in the `visualizations/` folder.
+
+### Programmatic Testing
+
+You can also test programmatically:
+
+```python
+from scam_detector import JobScamDetector
+import os
+
+# Set API key (or use environment variable)
+api_key = os.getenv('GEMINI_API_KEY')
+
+# Initialize detector
+detector = JobScamDetector(api_key=api_key)
+
+# Analyze dataset
+results = detector.analyze_dataset("data/data-ashley(Sheet1).csv")
+
+# Generate report
+report = detector.generate_report(results)
+
+# Check results location
+print(f"Results saved to: {detector.file_handler.get_results_path()}")
+print(f"Report saved to: {detector.file_handler.get_report_path()}")
+```
+
 ## Troubleshooting
 
 ### Common Issues
 
 1. **API Key Error**: Ensure `GEMINI_API_KEY` environment variable is set
-2. **Model Not Found Error**: Run `python check_models.py` to see available models
-3. **CSV Format Error**: Check that your CSV has the required columns
-4. **Memory Issues**: For large datasets, consider processing in batches
+   ```bash
+   echo $GEMINI_API_KEY  # Should show your key
+   ```
+
+2. **Module Not Found Error**: Make sure virtual environment is activated and dependencies are installed
+   ```bash
+   source venv/bin/activate  # Activate venv first
+   pip install -r requirements.txt
+   ```
+
+3. **Model Not Found Error**: Run `python check_models.py` to see available models
+
+4. **CSV Format Error**: Check that your CSV has the required columns:
+   - `Consumer complaint narrative` (required)
+   - `Complaint ID` (optional)
+
+5. **File Not Found**: Check the path to your CSV file
+   ```bash
+   ls -la "data/data-ashley(Sheet1).csv"
+   ```
+
+6. **Memory Issues**: For large datasets, consider processing in batches
 
 ### Model Availability Issues
 
@@ -183,14 +267,39 @@ python check_models.py
 - Monitor API usage to avoid rate limits
 - Consider caching results for repeated analysis
 
+## Project Structure
+
+The project has been refactored into a modular structure:
+
+```
+scam_detector/          # Main package
+├── __init__.py        # Package initialization
+├── config.py          # Configuration and constants
+├── detector.py        # Main detector class
+├── text_processor.py  # Text preprocessing and indicators
+├── gemini_client.py   # Gemini API wrapper
+├── prompt_scam_analysis.py  # AI prompt templates
+├── report_generator.py # Report generation
+└── file_handler.py    # File I/O operations
+
+detect_res/            # Output directory for analysis results
+visualizations/        # Generated visualization charts
+data/                  # Input data files
+main.py               # New entry point (CLI)
+job_scam_detector.py  # Legacy wrapper (backward compatible)
+visualize_results.py  # Visualization script
+```
+
 ## Contributing
 
 To improve the system:
 
-1. Add new scam indicators to `scam_indicators` dictionary
-2. Enhance the Gemini prompt for better analysis
-3. Add new visualization types
-4. Implement additional data preprocessing
+1. **Enhance Prompt Engineering**: Improve the Gemini prompt in `scam_detector/prompt_scam_analysis.py` for better detection accuracy
+2. **Add Visualizations**: Create new visualization types in `visualize_results.py`
+3. **Improve Text Processing**: Enhance preprocessing in `scam_detector/text_processor.py`
+4. **Expand Analysis**: Add new analysis dimensions in `scam_detector/report_generator.py`
+
+The system is designed to rely on AI analysis rather than rule-based heuristics, so focus improvements on prompt engineering and model optimization.
 
 ## License
 

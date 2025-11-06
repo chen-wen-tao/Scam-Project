@@ -25,6 +25,9 @@ class ScamVisualizer:
         self.results_df = pd.read_csv(results_file)
         self.report = None
         
+        # Use risk_score (Gemini's scam_probability) or fallback to overall_risk_score for backward compatibility
+        self.risk_score_col = 'risk_score' if 'risk_score' in self.results_df.columns else 'overall_risk_score'
+        
         if report_file:
             with open(report_file, 'r') as f:
                 self.report = json.load(f)
@@ -35,7 +38,7 @@ class ScamVisualizer:
         
         # Create histogram
         plt.subplot(1, 2, 1)
-        plt.hist(self.results_df['overall_risk_score'], bins=20, alpha=0.7, color='skyblue', edgecolor='black')
+        plt.hist(self.results_df[self.risk_score_col], bins=20, alpha=0.7, color='skyblue', edgecolor='black')
         plt.xlabel('Risk Score')
         plt.ylabel('Number of Complaints')
         plt.title('Distribution of Risk Scores')
@@ -43,7 +46,7 @@ class ScamVisualizer:
         
         # Create box plot
         plt.subplot(1, 2, 2)
-        plt.boxplot(self.results_df['overall_risk_score'], vert=True)
+        plt.boxplot(self.results_df[self.risk_score_col], vert=True)
         plt.ylabel('Risk Score')
         plt.title('Risk Score Box Plot')
         plt.grid(True, alpha=0.3)
@@ -52,24 +55,29 @@ class ScamVisualizer:
         
         if save_path:
             plt.savefig(save_path, dpi=300, bbox_inches='tight')
-            print(f"Risk distribution plot saved to: {save_path}")
+            print(f"✓ Risk distribution plot saved to: {save_path}")
         
-        plt.show()
+        plt.close()  # Close figure to free memory
     
     def plot_red_flags_heatmap(self, save_path: str = None):
-        """Create heatmap of red flags by category"""
-        # Extract red flag categories and counts
+        """Create heatmap of red flags from Gemini analysis"""
+        # Extract red flags from Gemini analysis (much more meaningful than rule-based)
         red_flag_data = []
         
         for idx, row in self.results_df.iterrows():
-            indicators = eval(row['rule_based_indicators']) if isinstance(row['rule_based_indicators'], str) else row['rule_based_indicators']
-            for category, flags in indicators.items():
-                for flag in flags:
-                    red_flag_data.append({
-                        'category': category,
-                        'flag': flag,
-                        'risk_score': row['overall_risk_score']
-                    })
+            analysis = row['gemini_analysis']
+            if isinstance(analysis, str):
+                import ast
+                analysis = ast.literal_eval(analysis)
+            
+            if isinstance(analysis, dict) and 'red_flags' in analysis:
+                red_flags = analysis['red_flags']
+                if isinstance(red_flags, list):
+                    for flag in red_flags:
+                        red_flag_data.append({
+                            'flag': flag,
+                            'risk_score': row[self.risk_score_col]
+                        })
         
         if not red_flag_data:
             print("No red flag data found for heatmap")
@@ -77,23 +85,23 @@ class ScamVisualizer:
         
         red_flag_df = pd.DataFrame(red_flag_data)
         
-        # Create pivot table for heatmap
-        pivot_data = red_flag_df.groupby(['category', 'flag']).size().unstack(fill_value=0)
+        # Create frequency table of top red flags
+        top_flags = red_flag_df['flag'].value_counts().head(20)
         
+        # Create a simple bar chart instead of heatmap since we don't have categories
         plt.figure(figsize=(15, 8))
-        sns.heatmap(pivot_data, annot=True, fmt='d', cmap='Reds', cbar_kws={'label': 'Frequency'})
-        plt.title('Red Flags Heatmap by Category')
-        plt.xlabel('Red Flag')
-        plt.ylabel('Category')
-        plt.xticks(rotation=45, ha='right')
-        plt.yticks(rotation=0)
+        top_flags.plot(kind='barh', color='coral')
+        plt.title('Top Red Flags from Gemini Analysis')
+        plt.xlabel('Frequency')
+        plt.ylabel('Red Flag')
+        plt.tight_layout()
         
         if save_path:
             plt.savefig(save_path, dpi=300, bbox_inches='tight')
-            print(f"Red flags heatmap saved to: {save_path}")
+            print(f"✓ Red flags chart saved to: {save_path}")
         
         plt.tight_layout()
-        plt.show()
+        plt.close()  # Close figure to free memory
     
     def plot_scam_types(self, save_path: str = None):
         """Plot distribution of scam types"""
@@ -114,21 +122,21 @@ class ScamVisualizer:
         
         if save_path:
             plt.savefig(save_path, dpi=300, bbox_inches='tight')
-            print(f"Scam types plot saved to: {save_path}")
+            print(f"✓ Scam types plot saved to: {save_path}")
         
-        plt.show()
+        plt.close()  # Close figure to free memory
     
     def plot_risk_vs_text_length(self, save_path: str = None):
         """Plot risk score vs text length correlation"""
         plt.figure(figsize=(10, 6))
         
-        plt.scatter(self.results_df['text_length'], self.results_df['overall_risk_score'], 
+        plt.scatter(self.results_df['text_length'], self.results_df[self.risk_score_col], 
                    alpha=0.6, color='red')
         
         # Add trend line
-        z = np.polyfit(self.results_df['text_length'], self.results_df['overall_risk_score'], 1)
+        z = np.polyfit(self.results_df['text_length'], self.results_df[self.risk_score_col], 1)
         p = np.poly1d(z)
-        plt.plot(self.results_df['text_length'], p(self.results_df['text_length']), 
+        plt.plot(self.results_df['text_length'], p(self.results_df[self.risk_score_col]), 
                 "r--", alpha=0.8, linewidth=2)
         
         plt.xlabel('Text Length (characters)')
@@ -137,15 +145,15 @@ class ScamVisualizer:
         plt.grid(True, alpha=0.3)
         
         # Calculate correlation
-        correlation = self.results_df['text_length'].corr(self.results_df['overall_risk_score'])
+        correlation = self.results_df['text_length'].corr(self.results_df[self.risk_score_col])
         plt.text(0.05, 0.95, f'Correlation: {correlation:.3f}', 
                 transform=plt.gca().transAxes, bbox=dict(boxstyle="round", facecolor='wheat'))
         
         if save_path:
             plt.savefig(save_path, dpi=300, bbox_inches='tight')
-            print(f"Risk vs text length plot saved to: {save_path}")
+            print(f"✓ Risk vs text length plot saved to: {save_path}")
         
-        plt.show()
+        plt.close()  # Close figure to free memory
     
     def plot_top_red_flags(self, save_path: str = None, top_n: int = 15):
         """Plot top red flags as horizontal bar chart"""
@@ -175,10 +183,10 @@ class ScamVisualizer:
         
         if save_path:
             plt.savefig(save_path, dpi=300, bbox_inches='tight')
-            print(f"Top red flags plot saved to: {save_path}")
+            print(f"✓ Top red flags plot saved to: {save_path}")
         
         plt.tight_layout()
-        plt.show()
+        plt.close()  # Close figure to free memory
     
     def create_dashboard(self, save_path: str = None):
         """Create a comprehensive dashboard with multiple plots"""
@@ -202,9 +210,9 @@ class ScamVisualizer:
         
         # 3. High Risk Complaints Timeline (if we have timestamps)
         if 'timestamp' in self.results_df.columns:
-            high_risk = self.results_df[self.results_df['overall_risk_score'] >= 70]
+            high_risk = self.results_df[self.results_df[self.risk_score_col] >= 70]
             if len(high_risk) > 0:
-                axes[1, 0].hist(high_risk['overall_risk_score'], bins=10, alpha=0.7, color='darkred')
+                axes[1, 0].hist(high_risk[self.risk_score_col], bins=10, alpha=0.7, color='darkred')
                 axes[1, 0].set_title('High Risk Complaints (Score ≥ 70)')
                 axes[1, 0].set_xlabel('Risk Score')
                 axes[1, 0].set_ylabel('Frequency')
@@ -220,10 +228,10 @@ class ScamVisualizer:
         # 4. Summary Statistics
         stats_text = f"""
         Total Complaints: {len(self.results_df)}
-        Avg Risk Score: {self.results_df['overall_risk_score'].mean():.1f}
-        High Risk (≥70): {len(self.results_df[self.results_df['overall_risk_score'] >= 70])}
-        Max Risk Score: {self.results_df['overall_risk_score'].max()}
-        Min Risk Score: {self.results_df['overall_risk_score'].min()}
+        Avg Risk Score: {self.results_df[self.risk_score_col].mean():.1f}
+        High Risk (≥70): {len(self.results_df[self.results_df[self.risk_score_col] >= 70])}
+        Max Risk Score: {self.results_df[self.risk_score_col].max()}
+        Min Risk Score: {self.results_df[self.risk_score_col].min()}
         """
         axes[1, 1].text(0.1, 0.5, stats_text, transform=axes[1, 1].transAxes, 
                         fontsize=12, verticalalignment='center',
@@ -235,9 +243,9 @@ class ScamVisualizer:
         
         if save_path:
             plt.savefig(save_path, dpi=300, bbox_inches='tight')
-            print(f"Dashboard saved to: {save_path}")
+            print(f"✓ Dashboard saved to: {save_path}")
         
-        plt.show()
+        plt.close()  # Close figure to free memory
     
     def generate_all_visualizations(self, output_dir: str = "visualizations"):
         """Generate all visualizations and save to output directory"""
@@ -264,12 +272,22 @@ class ScamVisualizer:
         # Dashboard
         self.create_dashboard(f"{output_dir}/dashboard.png")
         
-        print(f"All visualizations saved to: {output_dir}/")
+        print(f"\n✅ All visualizations saved to: {output_dir}/")
+        print(f"   - risk_distribution.png")
+        print(f"   - red_flags_heatmap.png")
+        print(f"   - scam_types.png")
+        print(f"   - risk_vs_text_length.png")
+        print(f"   - top_red_flags.png")
+        print(f"   - dashboard.png")
 
 def main():
     """Main function to generate visualizations"""
-    results_file = "/Users/chenwentao/Desktop/Scam Project/scam_analysis_results.csv"
-    report_file = "/Users/chenwentao/Desktop/Scam Project/scam_analysis_report.json"
+    from pathlib import Path
+    from scam_detector.config import DEFAULT_OUTPUT_DIR, DEFAULT_RESULTS_CSV, DEFAULT_REPORT_JSON
+    
+    # Use detect_res/ folder for results
+    results_file = str(DEFAULT_OUTPUT_DIR / DEFAULT_RESULTS_CSV)
+    report_file = str(DEFAULT_OUTPUT_DIR / DEFAULT_REPORT_JSON)
     
     try:
         visualizer = ScamVisualizer(results_file, report_file)
@@ -278,6 +296,9 @@ def main():
     except FileNotFoundError as e:
         print(f"Error: {e}")
         print("Please run the main analysis script first to generate results.")
+        print(f"Expected files:")
+        print(f"  - {results_file}")
+        print(f"  - {report_file}")
     except Exception as e:
         print(f"Error generating visualizations: {e}")
 

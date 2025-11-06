@@ -1,0 +1,160 @@
+{
+  "summary": {
+    "total_complaints": 26,
+    "high_risk_complaints": 26,
+    "high_risk_percentage": 100.0,
+    "average_risk_score": 99.61538461538461,
+    "median_risk_score": 100.0,
+    "high_risk_threshold": 70
+  },
+  "risk_distribution": {
+    "95": 2,
+    "100": 24
+  },
+  "top_red_flags": {
+    "Unsolicited job offer received via email.": 2,
+    "Unsolicited job offer from an unknown source (implied by 'contacted by a company claiming to be XXXX')": 1,
+    "Job duties involve 'initially processing checks for their customers' and 'funding loans' from a remote position using a personal bank account.": 1,
+    "Check found to be fraudulent (address matches a liquor store, bank account closed, check bounced).": 1,
+    "Job description disappeared from the platform after application.": 1,
+    "Interview conducted solely via messaging app (XXXX) without video or phone calls.": 1,
+    "Request for driver's license image via email for 'background check' in a suspicious context.": 1,
+    "Inability to verify employer/recruiter identity through official channels (e.g., real XXXX XXXX on XXXX).": 1,
+    "High pressure/urgency to act on the check and equipment purchase.": 1,
+    "Communication primarily through generic email, messaging apps, and multiple personal-looking phone numbers.": 1
+  },
+  "scam_type_distribution": {
+    "Job Scam (Impersonation and Advance Fee Variant) - The scammers impersonated a legitimate company to offer a fake job. The primary mechanism of financial loss was convincing the victim to send money (an advance fee) under false pretenses, likely related to 'equipment', 'software', or 'processing fees' for the supposed job.": 1,
+    "Employment Scam / Remote Job Scam combined with a Fake Check Scam and Advance Fee Scam. The 'advance fee' is disguised as payment for equipment, which the victim 'pays' for using funds from a fraudulent check.": 1,
+    "Fake Check / Overpayment Scam (often masquerading as a Work-From-Home or Personal Assistant job scam). The core mechanism is to send a fraudulent check, induce the victim to deposit it, and then have the victim send a portion of the 'funds' (which are not real) to a third party (often an accomplice) before the check bounces, leaving the victim responsible for the entire amount.": 1,
+    "Fake Check Scam / Job Offer Scam (Advance Fee Variant). This is a classic scam where a fraudulent check is sent to the victim, who is then instructed to deposit it and send a portion of the money (before the check fully clears) to a third party for supposed work-related expenses. When the check inevitably bounces, the victim is left responsible for the funds they sent, leading to significant financial loss and often negative bank balances.": 1,
+    "Fake Check / Overpayment Scam combined with a Reshipping Scam. The victim received fraudulent funds (via a fake check or ACH transfer) which they then used to purchase goods (equipment) and ship them to the scammers, suffering a direct financial loss when the original fraudulent transaction was reversed.": 1,
+    "Fake Check Scam / Overpayment Scam (Employment Scam variation). The scammer sends a fraudulent check, instructs the victim to deposit it and then send a portion of the funds to another party (often an accomplice) before the original check bounces, leaving the victim responsible for the transferred amount.": 1,
+    "Employment Scam / Job Scam combined with a Fake Check Scam (Overpayment Scam). The scammer poses as a legitimate employer to trick the victim into depositing a counterfeit check and then forwarding a portion of the funds to a third party before the check bounces.": 1,
+    "Fake Check / Advance Fee Scam (disguised as an Employment Scam)": 1,
+    "Money Mule / Fake Check (or Fraudulent Transfer) Scam. The victim was unknowingly recruited as a money mule to launder fraudulently obtained funds, bearing the financial loss when the initial deposit was reversed.": 1,
+    "This is a classic 'Fake Check Employment Scam' combined with an 'Advance Fee Scam' and potential 'Identity Theft'. The scammers pretended to be a legitimate employer, sent a fraudulent check for 'equipment', and instructed the victim to send money to a 'vendor' from their own funds before the fake check could fully clear. The victim lost the transferred money and potentially exposed personal identifying information.": 1,
+    "Fake Check Scam (Job Seeker / Equipment Variant). This is also a type of Advance Fee Scam where the 'fee' is for equipment the scammer claims to provide through a specific vendor.": 1,
+    "Employment/Job Offer Scam combined with a Fake Check Scam and Advance Fee elements. The victim sends their own (or not-yet-cleared) money to the scammer under false pretenses.": 1,
+    "Fake Check Scam / Employment Scam / Advance Fee Scam (Hybrid) - This is a classic fake check scam disguised as an employment offer. The victim is 'overpaid' with a fraudulent check and instructed to send a portion of the money back to a 'vendor' before the check clears, ultimately using their own funds.": 1,
+    "Employment Scam (Fake Check Advance Fee)": 1,
+    "Fake Check / Overpayment Scam combined with Job Offer Scam. The perpetrators leverage the victim's desire for employment to establish trust, then send fraudulent checks and instruct the victim to forward a portion of the funds (from their own cleared money) to third parties, leaving the victim responsible when the checks inevitably bounce.": 1,
+    "Fake Check Scam / Advance Fee Scam. The scammer sends a fraudulent check and then requests the victim to send a portion of that money back (or to a third party) before the fake check has cleared the bank. The victim's bank initially makes the funds available, but when the check bounces, the victim is responsible for the full amount withdrawn and sent.": 1,
+    "This is a classic 'Fake Check / Job Scam' combined with elements of an 'Advance Fee Scam' and potentially a 'Money Mule Scam'. The victim was sent fraudulent checks (fake check scam) under the guise of employment (job scam). They were then instructed to deposit these checks and immediately send a portion of the funds to a supposed 'vendor' for equipment via an irreversible method like Zelle. When the fake checks inevitably bounced, the victim was left responsible for the funds they had already sent, resulting in a direct financial loss (advance fee component). The 'vendor' to whom the money was sent could be another victim, a money mule, or an accomplice of the scammers.": 1,
+    "Fake Check / Employment Scam (specifically, a work-from-home or mystery shopper variant). The scam involves an offer of employment, followed by sending fraudulent checks that the victim is instructed to deposit and then immediately use to send money to third parties (purportedly for equipment, supplies, or as an 'overpayment'). The victim is left responsible for the bounced check once the bank discovers it is fraudulent.": 1,
+    "Fake Check Scam (specifically a Personal Assistant / Mystery Shopper variant). This scam involves sending a fraudulent check to the victim, instructing them to deposit it, keep a portion as payment, and then send the remainder (often via irreversible methods like money orders or wire transfers) to a third party before the initial check ultimately bounces, leaving the victim responsible for the entire amount.": 1,
+    "Fake Check Scam / Advance Fee Scam. This is a classic fake check scam, often disguised as a work-from-home job, personal assistant, or mystery shopper role. The victim is instructed to deposit a fraudulent check (often for an 'overpayment' or 'start-up funds') and then send a portion of that money via an untraceable method (like money order or wire transfer) to the scammer or a 'third party' before the fake check bounces. The victim ends up losing the money they sent and is liable for the full amount of the bad check to their bank.": 1,
+    "Fake Check Scam / Counterfeit Check Scam (often combined with Employment Scam or Mystery Shopper Scam). The core mechanism is tricking the victim into depositing a fraudulent check and then sending a portion of the 'funds' (which are not real) to the scammer or an accomplice before the check bounces, leaving the victim responsible for the entire amount.": 1,
+    "Fake Check Scam / Overpayment Scam. This specific variant is often disguised as a 'Freelance Job' or 'Employment' scam, where the scammer pretends to hire for services, overpays with a fraudulent check, and then demands a portion of the money back before the fake check bounces.": 1,
+    "Fake Check Scam / Employment Scam. The scammers posed as a legitimate employer (employment scam) and sent a fraudulent check to the victim. The victim was then instructed to use a portion of these (unclear) funds to purchase equipment via Zelle, a common tactic in fake check scams where the victim effectively sends 'real' money before the 'fake' money deposited into their account bounces.": 1,
+    "Fake Check / Employment Scam (also known as Overpayment Scam). The scam involves depositing a fraudulent check (often a digital image), and then pressuring the victim to send money back or pay for 'materials' before the fake check fully clears the bank. The bank makes the funds 'available' but reverses the deposit once the check is found to be counterfeit, leaving the victim responsible for any money they sent out.": 1,
+    "Fake Check Scam / Employment Scam (with Advance Fee component). The core mechanism is a fake check, designed to trick the victim into sending real money from their own account before the fraud is discovered.": 1,
+    "Fake Check Scam / Remote Work Equipment Scam (combined with Advance Fee/Overpayment elements). The core mechanism is the scammer sending a fraudulent check and then instructing the victim to send a portion of that 'money' via an irreversible method before the check bounces.": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 11310670,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11258229,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11629506,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11338911,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11582419,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11913356,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11576878,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 4635636,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 4516979,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5834474,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5903957,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5805173,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 6504818,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 3604669,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 6419337,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 7212558,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 4035380,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 4239683,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 1306236,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5187241,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 9709633,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 8714085,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 1617882,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5788206,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 2693172,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5833930,
+      "risk_score": 100
+    }
+  ]
+}

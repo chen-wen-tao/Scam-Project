@@ -6,7 +6,7 @@ Demonstrates how to use the system for various scenarios
 
 import os
 import json
-from job_scam_detector import JobScamDetector
+from scam_detector import JobScamDetector
 
 def example_single_analysis():
     """Example: Analyze a single complaint"""

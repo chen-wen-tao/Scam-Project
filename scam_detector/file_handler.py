@@ -1,0 +1,93 @@
+"""
+File I/O operations for the scam detection system
+"""
+
+import os
+import json
+import pandas as pd
+from pathlib import Path
+from typing import Optional
+from .config import DEFAULT_OUTPUT_DIR, DEFAULT_RESULTS_CSV, DEFAULT_REPORT_JSON
+
+
+class FileHandler:
+    """Handles file operations for saving and loading results"""
+    
+    def __init__(self, output_dir: Path = None):
+        """
+        Initialize file handler
+        
+        Args:
+            output_dir: Directory to save results (defaults to detect_res/)
+        """
+        self.output_dir = Path(output_dir) if output_dir else DEFAULT_OUTPUT_DIR
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+    
+    def save_results_csv(self, results_df: pd.DataFrame, filename: str = None) -> Path:
+        """
+        Save analysis results to CSV
+        
+        Args:
+            results_df: DataFrame with results
+            filename: Optional custom filename
+            
+        Returns:
+            Path to saved file
+        """
+        filename = filename or DEFAULT_RESULTS_CSV
+        filepath = self.output_dir / filename
+        results_df.to_csv(filepath, index=False)
+        return filepath
+    
+    def save_report_json(self, report: dict, filename: str = None) -> Path:
+        """
+        Save analysis report to JSON
+        
+        Args:
+            report: Report dictionary
+            filename: Optional custom filename
+            
+        Returns:
+            Path to saved file
+        """
+        filename = filename or DEFAULT_REPORT_JSON
+        filepath = self.output_dir / filename
+        with open(filepath, 'w') as f:
+            json.dump(report, f, indent=2)
+        return filepath
+    
+    def load_csv(self, filepath: str) -> pd.DataFrame:
+        """
+        Load CSV file
+        
+        Args:
+            filepath: Path to CSV file
+            
+        Returns:
+            Loaded DataFrame
+        """
+        return pd.read_csv(filepath)
+    
+    def load_json(self, filepath: str) -> dict:
+        """
+        Load JSON file
+        
+        Args:
+            filepath: Path to JSON file
+            
+        Returns:
+            Loaded dictionary
+        """
+        with open(filepath, 'r') as f:
+            return json.load(f)
+    
+    def get_results_path(self, filename: str = None) -> Path:
+        """Get path to results file"""
+        filename = filename or DEFAULT_RESULTS_CSV
+        return self.output_dir / filename
+    
+    def get_report_path(self, filename: str = None) -> Path:
+        """Get path to report file"""
+        filename = filename or DEFAULT_REPORT_JSON
+        return self.output_dir / filename
+

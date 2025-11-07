@@ -1,6 +1,6 @@
 # Job Scam Detection Project - Summary
 
-## 1. What are the goal(s) of your project?
+## 1. What are the goal(s) of our project?
 
 ### Primary Goal
 **Use prompt engineering to effectively detect job scams using data from CFPB.**
@@ -50,7 +50,7 @@ This involves creating a systematic classification system that:
 
 ---
 
-## 2. What have you done up to now?
+## 2. What have we done up to now?
 
 ### System Architecture & Refactoring
 - **Modular Package Structure**: Refactored monolithic code into a clean, modular architecture (`scam_detector/` package)
@@ -100,12 +100,12 @@ This involves creating a systematic classification system that:
 
 ---
 
-## 3. What are your goals for now until your final presentation in December?
+## 3. What are our goals for now until our final presentation in December?
 
 Based on `TO_DO.md`, the following goals are planned:
 
 ### Data Preparation
-1. **Merge Data Files**: Combine all three data files (`data-ashley(Sheet1).csv`, `data-NingXi.xlsx`, `complaints-2025-11-02_23_08.xlsx`) into a single unified dataset, eliminating redundant rows
+1. **Merge Data Files**: Combine all three data files (`data-ashley(Sheet1).csv`, `data-NingXi.xlsx`, `complaints-2025-11-02_23_08.xlsx`) into a single unified dataset, eliminating redundant rows based on complaint id.
 
 ### Prompt Engineering & Data Generation
 2. **Synthetic Complaint Generation**: Craft prompts that leverage:

@@ -5,13 +5,15 @@ Based on academic research (Ravenelle et al., 2022) and FTC guidelines
 
 import json
 from pathlib import Path
+from functools import lru_cache
 
 # Load classification framework once at module level
 _FRAMEWORK_PATH = Path(__file__).parent / "scam_classification_framework.json"
 _FRAMEWORK = None
+_FRAMEWORK_SUMMARY = None  # Cache the summary string
 
 def _load_framework():
-    """Load the classification framework from JSON file"""
+    """Load the classification framework from JSON file (cached)"""
     global _FRAMEWORK
     if _FRAMEWORK is None:
         try:
@@ -22,8 +24,8 @@ def _load_framework():
             _FRAMEWORK = {}
     return _FRAMEWORK
 
-def _get_framework_summary():
-    """Get a minimal condensed summary of the framework for the prompt"""
+def _compute_framework_summary():
+    """Compute the framework summary (internal function)"""
     framework = _load_framework()
     if not framework:
         return "Use standard job scam classification (Ravenelle et al., 2022)."
@@ -34,6 +36,14 @@ def _get_framework_summary():
         return f"Categories: {', '.join(categories)}"
     
     return ""
+
+@lru_cache(maxsize=1)
+def _get_framework_summary():
+    """Get a minimal condensed summary of the framework for the prompt (cached)"""
+    return _compute_framework_summary()
+
+# Pre-compute and cache the framework summary at module load time for instant access
+_FRAMEWORK_SUMMARY = _compute_framework_summary()
 
 SCAM_ANALYSIS_PROMPT_TEMPLATE = """Analyze this job complaint for scam indicators. Categories: {framework_summary}
 
@@ -63,7 +73,8 @@ def get_scam_analysis_prompt(text: str) -> str:
     Returns:
         Formatted prompt string with comprehensive job scam classification framework
     """
-    framework_summary = _get_framework_summary()
+    # Use pre-computed cached summary for instant access
+    framework_summary = _FRAMEWORK_SUMMARY if _FRAMEWORK_SUMMARY is not None else _get_framework_summary()
     return SCAM_ANALYSIS_PROMPT_TEMPLATE.format(
         text=text,
         framework_summary=framework_summary

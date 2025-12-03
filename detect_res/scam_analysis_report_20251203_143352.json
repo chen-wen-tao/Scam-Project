@@ -1,0 +1,155 @@
+{
+  "summary": {
+    "total_complaints": 26,
+    "high_risk_complaints": 26,
+    "high_risk_percentage": 100.0,
+    "average_risk_score": 99.76923076923077,
+    "median_risk_score": 100.0,
+    "high_risk_threshold": 70
+  },
+  "risk_distribution": {
+    "95": 1,
+    "99": 1,
+    "100": 24
+  },
+  "top_red_flags": {
+    "Unsolicited job offer received via email.": 2,
+    "Impersonation of a 'big HR person' from a known company.": 1,
+    "Victim was asked to send money to a 'local vendor' for equipment *before* the employer's check cleared.": 1,
+    "No in-person contact or official onboarding process described.": 1,
+    "Request for a picture of the driver's license for a 'background check' via email, which is not a secure or standard method for sensitive PII.": 1,
+    "Quick job offer immediately after a single interview, often a tactic to rush victims.": 1,
+    "The job description page disappeared shortly after the application/interview, preventing re-verification of the opportunity.": 1,
+    "Bank unwilling to reverse the authorized transfer to the 'vendor's' account, indicating the money is likely lost.": 1,
+    "Bank (Chase) confirmed the deposited check was rejected due to a closed account.": 1,
+    "Address on the fraudulent check was for a liquor store, not a corporate office.": 1
+  },
+  "scam_type_distribution": {
+    "Fake Check Scam": 4,
+    "Financial Mark Scams": 3,
+    "Fake Check / Overpayment Scam": 2,
+    "Corporate Identity Theft": 1,
+    "Fake Check/Overpayment Scam": 1,
+    "Fake Check Scam / Overpayment Scam": 1,
+    "Money Mule / Reshipping Scam": 1,
+    "Fake Placement/Staffing Scams, Corporate Identity Theft": 1,
+    "Check Overpayment Scam": 1,
+    "Fake Check/Wire Transfer Scam (Money Mule)": 1,
+    "Fake Check / Equipment Purchase Scam": 1,
+    "Fake Check / Money Mule Scam": 1,
+    "Fake Check Scam (Employment Impersonation)": 1,
+    "Fake Placement/Staffing Scams": 1,
+    "Scapegoat Scams": 1,
+    "Check/Overpayment Scam": 1,
+    "Fake Check Scam / Money Mule Scam": 1,
+    "Fake Check / Overpayment Scam, Corporate Identity Theft, Job Offer Scam": 1,
+    "Advance Fee/Fake Check Scam (Job Equipment)": 1,
+    "Fake Placement/Staffing Scams (specifically a Fake Check Scam)": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 11258229,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11310670,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11629506,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11338911,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11582419,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11913356,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11576878,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 4635636,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 4516979,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5834474,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5903957,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5805173,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 6504818,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 3604669,
+      "risk_score": 99
+    },
+    {
+      "complaint_id": 6419337,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 7212558,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 4035380,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 4239683,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 1306236,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5187241,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 9709633,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 1617882,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 8714085,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5788206,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 2693172,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5833930,
+      "risk_score": 100
+    }
+  ]
+}

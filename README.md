@@ -57,7 +57,7 @@ python main.py --input "data/data-ashley(Sheet1).csv"
 **With custom options:**
 ```bash
 # Custom output directory
-python main.py --input "data/data-ashley(Sheet1).csv" --output-dir detect_res
+python3 main.py --input "data/data-ashley.csv" --output-dir detect_res
 
 # Custom filenames
 python main.py --input "data/data-ashley(Sheet1).csv" --results-file ashley_results.csv --report-file ashley_report.json

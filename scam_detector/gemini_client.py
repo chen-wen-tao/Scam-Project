@@ -6,7 +6,7 @@ import re
 import json
 import logging
 import google.generativeai as genai
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 
 from .prompt_scam_analysis import get_scam_analysis_prompt
 
@@ -84,7 +84,7 @@ class GeminiClient:
         
         raise ValueError("No compatible Gemini model found. Please check your API key and model availability.")
     
-    def analyze_text(self, text: str, complaint_id: str = None) -> Dict[str, Any]:
+    def analyze_text(self, text: str, complaint_id: Optional[str] = None) -> Dict[str, Any]:
         """
         Use Gemini AI to analyze text for scam indicators
         
@@ -102,10 +102,26 @@ class GeminiClient:
             response = self.model.generate_content(prompt)
             result_text = response.text
             
-            # Try to extract JSON from response
-            json_match = re.search(r'\{.*\}', result_text, re.DOTALL)
+            # Try to extract JSON from response - use more robust extraction
+            # First try to find JSON block (may be wrapped in markdown code blocks)
+            json_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', result_text, re.DOTALL)
+            if not json_match:
+                # Try without code blocks
+                json_match = re.search(r'\{.*\}', result_text, re.DOTALL)
+            
             if json_match:
-                return json.loads(json_match.group())
+                json_str = json_match.group(1) if json_match.lastindex else json_match.group()
+                try:
+                    return json.loads(json_str)
+                except json.JSONDecodeError as json_err:
+                    logger.warning(f"JSON decode error, trying to fix: {json_err}")
+                    # Try to fix common JSON issues
+                    json_str = self._fix_json_string(json_str)
+                    try:
+                        return json.loads(json_str)
+                    except json.JSONDecodeError:
+                        logger.error(f"Could not parse JSON even after fixing: {json_err}")
+                        return self._parse_fallback_response(result_text)
             else:
                 # Fallback parsing
                 return self._parse_fallback_response(result_text)
@@ -114,11 +130,11 @@ class GeminiClient:
             logger.error(f"Error analyzing with Gemini: {e}")
             return {
                 "scam_probability": 0,
-                "red_flags": [],
-                "financial_risk": "Unknown",
-                "scam_type": "Unknown",
-                "victim_profile": "Unknown",
-                "recommendations": [],
+                "red_flags": {},
+                "financial_risk": {"level": "Unknown"},
+                "scam_type": {"primary_category": "Unknown", "subcategory": "Unknown"},
+                "victim_profile": {"risk_level": "Unknown"},
+                "recommendations": {},
                 "confidence": 0,
                 "error": str(e)
             }
@@ -155,4 +171,13 @@ class GeminiClient:
             items = re.findall(r'"([^"]+)"', match.group(1))
             return items
         return []
+    
+    def _fix_json_string(self, json_str: str) -> str:
+        """Try to fix common JSON issues"""
+        # Remove trailing commas before closing braces/brackets
+        json_str = re.sub(r',\s*}', '}', json_str)
+        json_str = re.sub(r',\s*]', ']', json_str)
+        # Fix unescaped quotes in strings (basic attempt)
+        # This is a simplified fix - may not handle all cases
+        return json_str
 

@@ -1,0 +1,164 @@
+{
+  "_metadata": {
+    "reference": "@prompt_scam_analysis.py (3-4)",
+    "description": "Classification framework for job scam detection. Referenced in prompt_scam_analysis.py lines 3-4. Based on academic research (Ravenelle et al., 2022) and FTC guidelines."
+  },
+  "scam_categories": {
+    "Financial Mark Scams": {
+      "description": "Jobs that don't exist; designed to extract money/information",
+      "subcategories": [
+        {
+          "id": "credit_score_check",
+          "name": "Credit Score Check Scam",
+          "description": "Requests sensitive information (SSN, DOB) under guise of credit/background check"
+        },
+        {
+          "id": "advance_fee_fraud",
+          "name": "Advance Fee Fraud",
+          "description": "Upfront payment for training, equipment, supplies, certification, or background checks"
+        },
+        {
+          "id": "fake_check_scheme",
+          "name": "Overpayment/Fake Check Scheme",
+          "description": "Worker receives check to purchase items, check later bounces"
+        },
+        {
+          "id": "payment_processing",
+          "name": "Payment Processing Scam",
+          "description": "Requests bank account info or asks worker to transfer funds between accounts"
+        },
+        {
+          "id": "work_from_home",
+          "name": "Work-from-Home Scam",
+          "description": "Unrealistic earnings claims ($1000s/month) with minimal effort/experience required"
+        }
+      ]
+    },
+    "Scapegoat Scams": {
+      "description": "Illegal activities disguised as legitimate employment",
+      "subcategories": [
+        {
+          "id": "package_reshipping",
+          "name": "Package Reshipping/Mule",
+          "description": "Worker unknowingly receives and ships stolen goods or contraband"
+        },
+        {
+          "id": "money_mule",
+          "name": "Money Mule Operation",
+          "description": "Transferring money obtained through illegal means"
+        },
+        {
+          "id": "check_printing",
+          "name": "Check Printing/Financial Fraud",
+          "description": "Creating or processing fraudulent financial documents"
+        },
+        {
+          "id": "identity_theft",
+          "name": "Identity Theft Operation",
+          "description": "Job is cover for harvesting and exploiting personal information"
+        }
+      ]
+    },
+    "Pyramid/MLM Schemes": {
+      "description": "Multi-level marketing schemes",
+      "subcategories": [
+        {
+          "id": "pyramid_scheme",
+          "name": "Pyramid Scheme",
+          "description": "Primary earnings from recruitment fees, not product sales"
+        },
+        {
+          "id": "questionable_mlm",
+          "name": "Questionable MLM",
+          "description": "Requires large upfront inventory purchase; emphasis on recruitment over retail sales"
+        }
+      ]
+    },
+    "Fake Placement/Staffing Scams": {
+      "description": "Fake staffing or placement services",
+      "subcategories": [
+        {
+          "id": "advance_fee_placement",
+          "name": "Advance Fee Placement",
+          "description": "Fake staffing agency charges upfront fees for job placement"
+        },
+        {
+          "id": "government_job_scam",
+          "name": "Government Job Scam",
+          "description": "Fraudulent federal/postal service job offers requiring payment"
+        }
+      ]
+    },
+    "Corporate Identity Theft": {
+      "description": "Impersonation of legitimate companies",
+      "subcategories": [
+        {
+          "id": "company_impersonation",
+          "name": "Company Impersonation",
+          "description": "Uses real company name/logo without authorization"
+        },
+        {
+          "id": "fake_recruiter",
+          "name": "Fake Recruiter",
+          "description": "Impersonates legitimate recruiter from known company"
+        }
+      ]
+    }
+  },
+  "red_flag_categories": {
+    "communication": [
+      "Unsolicited contact via email/text/messaging app",
+      "Communication from personal email (Gmail, Yahoo) not company domain",
+      "Poor grammar, spelling errors, or unprofessional language",
+      "Pressure to respond immediately or accept offer quickly",
+      "Interview conducted entirely via text/chat (no video/phone)",
+      "Vague or evasive answers about company/role details"
+    ],
+    "financial": [
+      "Requests payment upfront for any reason (equipment, training, background check)",
+      "Asks for bank account, credit card, or SSN before job offer",
+      "Requests financial information early in process (before conditional offer)",
+      "Promises unrealistic salary for skill level/experience",
+      "Asks to deposit check and return portion of money",
+      "Requires purchase of starter kit or inventory",
+      "Payment via wire transfer, cryptocurrency, gift cards, or prepaid cards"
+    ],
+    "job_posting": [
+      "Extremely high pay for minimal experience/effort",
+      "Vague job description or responsibilities",
+      "\"Too good to be true\" promises (work from home, set own hours, $5000+/month)",
+      "No legitimate company information or website",
+      "Missing or suspicious contact information",
+      "Posted on multiple platforms with different company names",
+      "Location listed as coordinates instead of address"
+    ],
+    "hiring_process": [
+      "Job offer without interview or after brief text exchange",
+      "No formal application or background check",
+      "Immediate hiring/start date",
+      "Asks for personal documents (ID, SSN) before conditional offer",
+      "Sends offer letter with spelling/formatting errors",
+      "Unable to verify company exists or has legitimate online presence"
+    ],
+    "work_activity": [
+      "Asked to receive and reship packages to unknown addresses",
+      "Instructed to move money between accounts",
+      "Required to recruit others as primary job function",
+      "Tasks involve receiving checks and making purchases",
+      "Work involves processing payments for others"
+    ]
+  },
+  "vulnerability_factors": [
+    "Employment desperation (recently unemployed, financial hardship)",
+    "Limited job search experience",
+    "Seeking remote/work-from-home opportunities",
+    "Young/inexperienced job seeker",
+    "Non-native English speaker",
+    "Urgency/time pressure (bills due, emergency expenses)",
+    "Social isolation (limited network to verify opportunity)",
+    "Specific demographic targeting (students, seniors, gig workers)"
+  ],
+  "risk_levels": ["Low", "Medium", "High", "Critical"],
+  "evidence_strength_levels": ["Strong", "Moderate", "Weak"]
+}
+

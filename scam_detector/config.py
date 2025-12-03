@@ -35,10 +35,15 @@ SCAM_INDICATORS = {
     ]
 }
 
-# Gemini model fallback list
-GEMINI_MODELS = ['gemini-1.5-pro', 'gemini-1.5-flash', 'gemini-1.0-pro']
+# Gemini model fallback list (prioritize faster models)
+# gemini-1.5-flash is faster and cheaper, good for batch processing
+# gemini-1.5-pro is more accurate but slower
+GEMINI_MODELS = ['gemini-1.5-flash', 'gemini-2.0-flash-exp', 'gemini-1.5-pro', 'gemini-1.0-pro']
 
 # Default file names
 DEFAULT_RESULTS_CSV = "scam_analysis_results.csv"
 DEFAULT_REPORT_JSON = "scam_analysis_report.json"
 
+# Performance optimization settings
+MAX_TEXT_LENGTH = 3000  # Truncate complaints longer than this (chars) to speed up processing
+DEFAULT_WORKERS = 2  # Default number of parallel workers for batch processing (set to 2 to avoid rate limits)

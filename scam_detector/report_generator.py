@@ -30,29 +30,71 @@ class ReportGenerator:
         risk_distribution = results_df[risk_score_col].value_counts().sort_index()
         
         # High risk complaints based on Gemini's scam_probability
-        high_risk = results_df[results_df[risk_score_col] >= high_risk_threshold]
+        high_risk_mask = results_df[risk_score_col] >= high_risk_threshold
+        high_risk = results_df[high_risk_mask].copy() if high_risk_mask.any() else pd.DataFrame()
         
         # Extract red flags from Gemini analysis (much more meaningful than rule-based)
         all_red_flags = []
         for analysis in results_df['gemini_analysis']:
-            if isinstance(analysis, str):
-                import ast
-                analysis = ast.literal_eval(analysis)
-            if isinstance(analysis, dict) and 'red_flags' in analysis:
-                red_flags = analysis['red_flags']
-                if isinstance(red_flags, list):
-                    all_red_flags.extend(red_flags)
+            try:
+                # Handle both dict and string representations
+                if isinstance(analysis, str):
+                    import json
+                    try:
+                        analysis = json.loads(analysis)
+                    except (json.JSONDecodeError, ValueError):
+                        import ast
+                        try:
+                            analysis = ast.literal_eval(analysis)
+                        except (ValueError, SyntaxError):
+                            continue
+                
+                if isinstance(analysis, dict) and 'red_flags' in analysis:
+                    red_flags = analysis['red_flags']
+                    # red_flags can be a dict with categories or a list
+                    if isinstance(red_flags, dict):
+                        # Extract all flags from all categories
+                        for category, flags in red_flags.items():
+                            if isinstance(flags, list):
+                                all_red_flags.extend(flags)
+                            elif isinstance(flags, str):
+                                all_red_flags.append(flags)
+                    elif isinstance(red_flags, list):
+                        all_red_flags.extend(red_flags)
+            except Exception as e:
+                # Skip problematic entries
+                continue
         
         red_flag_counts = pd.Series(all_red_flags).value_counts() if all_red_flags else pd.Series()
         
         # Scam type distribution
         scam_types = []
         for analysis in results_df['gemini_analysis']:
-            if isinstance(analysis, str):
-                import ast
-                analysis = ast.literal_eval(analysis)
-            if isinstance(analysis, dict) and 'scam_type' in analysis:
-                scam_types.append(analysis['scam_type'])
+            try:
+                # Handle both dict and string representations
+                if isinstance(analysis, str):
+                    import json
+                    try:
+                        analysis = json.loads(analysis)
+                    except (json.JSONDecodeError, ValueError):
+                        import ast
+                        try:
+                            analysis = ast.literal_eval(analysis)
+                        except (ValueError, SyntaxError):
+                            continue
+                
+                if isinstance(analysis, dict) and 'scam_type' in analysis:
+                    scam_type = analysis['scam_type']
+                    # scam_type can be a dict or a string
+                    if isinstance(scam_type, dict):
+                        # Extract subcategory or primary category name
+                        type_name = scam_type.get('subcategory') or scam_type.get('primary_category_name') or str(scam_type)
+                        scam_types.append(type_name)
+                    elif isinstance(scam_type, str):
+                        scam_types.append(scam_type)
+            except Exception as e:
+                # Skip problematic entries
+                continue
         
         scam_type_distribution = pd.Series(scam_types).value_counts()
         
@@ -68,7 +110,7 @@ class ReportGenerator:
             'risk_distribution': risk_distribution.to_dict(),
             'top_red_flags': red_flag_counts.head(10).to_dict() if len(red_flag_counts) > 0 else {},
             'scam_type_distribution': scam_type_distribution.to_dict(),
-            'high_risk_complaints': high_risk[['complaint_id', risk_score_col]].to_dict('records') if len(high_risk) > 0 else []
+            'high_risk_complaints': high_risk[['complaint_id', risk_score_col]].to_dict(orient='records') if len(high_risk) > 0 else []  # type: ignore
         }
         
         return report

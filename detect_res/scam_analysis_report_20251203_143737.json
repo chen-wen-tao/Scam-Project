@@ -1,0 +1,84 @@
+{
+  "summary": {
+    "total_complaints": 26,
+    "high_risk_complaints": 11,
+    "high_risk_percentage": 42.30769230769231,
+    "average_risk_score": 42.30769230769231,
+    "median_risk_score": 0.0,
+    "high_risk_threshold": 70
+  },
+  "risk_distribution": {
+    "0": 15,
+    "100": 11
+  },
+  "top_red_flags": {
+    "Scammer impersonated a 'big HR person' from a known company (Assurant).": 1,
+    "Victim lost personal funds when the fraudulent check bounced.": 1,
+    "The 'work' involved handling and transferring money (a common indicator of money mule schemes, where victims unwittingly launder money)": 1,
+    "Quick offer and receipt of a large check without substantial work performed": 1,
+    "Lack of formal interview or background checks": 1,
+    "No legitimate interview or onboarding process described, just 'fill up all my information'": 1,
+    "Implicit promise of easy money/extra income with minimal effort or clear job duties (implied by 'make an extra money' and weekly pay without specifics)": 1,
+    "Bank confirmation that funds cannot be credited back due to a fraudulent transaction": 1,
+    "Instructed to send money from the deposited check to a third party/scammer's account": 1,
+    "Received a check for more than expected (overpayment scheme)": 1
+  },
+  "scam_type_distribution": {
+    "Unknown": 15,
+    "Fake Check Scam": 3,
+    "Fake Check Scam / Corporate Identity Theft": 1,
+    "Corporate Identity Theft / Advanced Fee Fraud": 1,
+    "Fake Check Scam / Equipment Scam": 1,
+    "Fake Check / Employment Scam": 1,
+    "Fake Check / Overpayment Scam with Corporate Identity Theft": 1,
+    "Fake Check Scam / Money Mule Scam": 1,
+    "Fake Placement/Staffing Scams (Job Scam with Fake Check Scheme)": 1,
+    "Fake Check/Overpayment Scam (Job Bait)": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 11258229,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11310670,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11629506,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11582419,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11338911,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11913356,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11576878,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 4635636,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 4516979,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5903957,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5834474,
+      "risk_score": 100
+    }
+  ]
+}

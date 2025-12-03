@@ -7,13 +7,14 @@ import json
 import pandas as pd
 from pathlib import Path
 from typing import Optional
+from datetime import datetime
 from .config import DEFAULT_OUTPUT_DIR, DEFAULT_RESULTS_CSV, DEFAULT_REPORT_JSON
 
 
 class FileHandler:
     """Handles file operations for saving and loading results"""
     
-    def __init__(self, output_dir: Path = None):
+    def __init__(self, output_dir: Optional[Path] = None):
         """
         Initialize file handler
         
@@ -23,7 +24,7 @@ class FileHandler:
         self.output_dir = Path(output_dir) if output_dir else DEFAULT_OUTPUT_DIR
         self.output_dir.mkdir(parents=True, exist_ok=True)
     
-    def save_results_csv(self, results_df: pd.DataFrame, filename: str = None) -> Path:
+    def save_results_csv(self, results_df: pd.DataFrame, filename: Optional[str] = None) -> Path:
         """
         Save analysis results to CSV
         
@@ -34,12 +35,14 @@ class FileHandler:
         Returns:
             Path to saved file
         """
-        filename = filename or DEFAULT_RESULTS_CSV
-        filepath = self.output_dir / filename
+        base_name = (filename or DEFAULT_RESULTS_CSV).replace('.csv', '')
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        final_name = f"{base_name}_{timestamp}.csv"
+        filepath = self.output_dir / final_name
         results_df.to_csv(filepath, index=False)
         return filepath
     
-    def save_report_json(self, report: dict, filename: str = None) -> Path:
+    def save_report_json(self, report: dict, filename: Optional[str] = None) -> Path:
         """
         Save analysis report to JSON
         
@@ -50,8 +53,10 @@ class FileHandler:
         Returns:
             Path to saved file
         """
-        filename = filename or DEFAULT_REPORT_JSON
-        filepath = self.output_dir / filename
+        base_name = (filename or DEFAULT_REPORT_JSON).replace('.json', '')
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        final_name = f"{base_name}_{timestamp}.json"
+        filepath = self.output_dir / final_name
         with open(filepath, 'w') as f:
             json.dump(report, f, indent=2)
         return filepath
@@ -81,12 +86,12 @@ class FileHandler:
         with open(filepath, 'r') as f:
             return json.load(f)
     
-    def get_results_path(self, filename: str = None) -> Path:
+    def get_results_path(self, filename: Optional[str] = None) -> Path:
         """Get path to results file"""
         filename = filename or DEFAULT_RESULTS_CSV
         return self.output_dir / filename
     
-    def get_report_path(self, filename: str = None) -> Path:
+    def get_report_path(self, filename: Optional[str] = None) -> Path:
         """Get path to report file"""
         filename = filename or DEFAULT_REPORT_JSON
         return self.output_dir / filename

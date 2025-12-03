@@ -3,11 +3,13 @@ Main Job Scam Detector class
 """
 
 import os
+import json
 import logging
 import pandas as pd
 from datetime import datetime
 from typing import Dict, Any, List, Optional
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from .text_processor import TextProcessor
 from .gemini_client import GeminiClient
@@ -22,7 +24,7 @@ class JobScamDetector:
     A comprehensive job scam detection system using Google Gemini AI
     """
     
-    def __init__(self, api_key: str = None, output_dir: Path = None):
+    def __init__(self, api_key: Optional[str] = None, output_dir: Optional[Path] = None):
         """
         Initialize the Job Scam Detector
         
@@ -42,7 +44,7 @@ class JobScamDetector:
         self.file_handler = FileHandler(output_dir)
         self.report_generator = ReportGenerator()
     
-    def analyze_complaint(self, complaint_text: str, complaint_id: str = None) -> Dict[str, Any]:
+    def analyze_complaint(self, complaint_text: str, complaint_id: Optional[str] = None) -> Dict[str, Any]:
         """
         Comprehensive analysis of a single complaint
         
@@ -73,13 +75,14 @@ class JobScamDetector:
         
         return analysis
     
-    def analyze_dataset(self, csv_file_path: str, output_filename: str = None) -> pd.DataFrame:
+    def analyze_dataset(self, csv_file_path: str, output_filename: Optional[str] = None, workers: int = 1) -> pd.DataFrame:
         """
         Analyze a dataset of complaints
         
         Args:
             csv_file_path: Path to CSV file with complaints
             output_filename: Optional output filename (will be saved to detect_res/)
+            workers: Number of parallel workers (threads) to use for API calls
             
         Returns:
             DataFrame with analysis results
@@ -95,23 +98,39 @@ class JobScamDetector:
         
         complaint_id_col = 'Complaint ID' if 'Complaint ID' in df.columns else None
         
-        results = []
-        
         logger.info(f"Analyzing {len(df)} complaints...")
         
-        for idx, row in df.iterrows():
+        results: List[Dict[str, Any]] = []
+        
+        def _process_row(idx_row_tuple):
+            idx, row = idx_row_tuple
             try:
                 complaint_text = row['Consumer complaint narrative']
                 complaint_id = row[complaint_id_col] if complaint_id_col else f"complaint_{idx}"
-                
                 logger.info(f"Analyzing complaint {idx + 1}/{len(df)}: {complaint_id}")
-                
-                analysis = self.analyze_complaint(complaint_text, complaint_id)
-                results.append(analysis)
-                
+                return self.analyze_complaint(complaint_text, complaint_id)
             except Exception as e:
                 logger.error(f"Error analyzing complaint {idx}: {e}")
-                continue
+                return None
+        
+        if workers and workers > 1:
+            logger.info(f"Running with {workers} parallel workers...")
+            with ThreadPoolExecutor(max_workers=workers) as executor:
+                futures = {executor.submit(_process_row, (idx, row)): idx for idx, row in df.iterrows()}
+                for future in as_completed(futures):
+                    res = future.result()
+                    if res is not None:
+                        results.append(res)
+        else:
+            for idx, row in df.iterrows():
+                res = _process_row((idx, row))
+                if res is not None:
+                    results.append(res)
+        
+        # Convert gemini_analysis dict to JSON string for CSV compatibility
+        for result in results:
+            if 'gemini_analysis' in result and isinstance(result['gemini_analysis'], dict):
+                result['gemini_analysis'] = json.dumps(result['gemini_analysis'])
         
         # Convert to DataFrame
         results_df = pd.DataFrame(results)
@@ -122,7 +141,7 @@ class JobScamDetector:
         
         return results_df
     
-    def generate_report(self, results_df: pd.DataFrame = None, report_filename: str = None) -> Dict[str, Any]:
+    def generate_report(self, results_df: Optional[pd.DataFrame] = None, report_filename: Optional[str] = None) -> Dict[str, Any]:
         """
         Generate comprehensive analysis report
         

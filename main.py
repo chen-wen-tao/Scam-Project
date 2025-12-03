@@ -10,6 +10,8 @@ import argparse
 from pathlib import Path
 
 from scam_detector import JobScamDetector
+from scam_detector.config import DEFAULT_WORKERS
+from scam_detector.config import DEFAULT_WORKERS
 
 # Configure logging
 logging.basicConfig(
@@ -28,8 +30,9 @@ def main():
     parser.add_argument(
         '--input', 
         type=str,
-        required=True,
-        help='Path to input CSV file with complaints'
+        required=False,
+        default='data/data-merged.csv',
+        help='Path to input CSV file with complaints (default: data/data-merged.csv)'
     )
     parser.add_argument(
         '--output-dir',
@@ -54,6 +57,12 @@ def main():
         type=str,
         default=None,
         help='Custom filename for report JSON (default: scam_analysis_report.json)'
+    )
+    parser.add_argument(
+        '--workers',
+        type=int,
+        default=DEFAULT_WORKERS,
+        help=f'Number of parallel workers for analysis (default: {DEFAULT_WORKERS}, increase for faster processing)'
     )
     
     args = parser.parse_args()
@@ -83,9 +92,11 @@ def main():
     try:
         # Analyze dataset
         logger.info(f"Starting analysis of {input_path}")
+        logger.info(f"Using {args.workers} worker(s) for parallel processing")
         results_df = detector.analyze_dataset(
             str(input_path),
-            output_filename=args.results_file
+            output_filename=args.results_file,
+            workers=args.workers
         )
         
         # Generate report

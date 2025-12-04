@@ -1,0 +1,112 @@
+{
+  "summary": {
+    "total_complaints": 6,
+    "high_risk_complaints": 6,
+    "high_risk_percentage": 100.0,
+    "average_risk_score": 95.5,
+    "median_risk_score": 95.0,
+    "high_risk_threshold": 70
+  },
+  "risk_distribution": {
+    "95": 5,
+    "98": 1
+  },
+  "top_red_flags": {
+    "Communication from an entity claiming to be a legitimate employer (XXXX) but later revealed to be impersonated.": 1,
+    "Extremely high pay for minimal experience/effort": 1,
+    "No mention of a formal application or background check beyond initial email exchange.": 1,
+    "The process moved rapidly from initial contact to payment requests.": 1,
+    "Job offer (implied) without a formal interview process, based on a reply to an email and discussion of achievements.": 1,
+    "The job was advertised as an 'internship', which can sometimes be used to exploit individuals seeking experience or resume building opportunities.": 1,
+    "The core of the scam involves fake checks designed to defraud the recipient.": 1,
+    "Issuing 'reimbursement' checks that are also fake, perpetuating the cycle.": 1,
+    "Sending digital checks for the victim to deposit and then pay out of pocket.": 1,
+    "Requests for payment for materials for an internship (likely fake training or equipment).": 1
+  },
+  "top_red_flags_by_category": {
+    "communication": {
+      "Communication from an entity claiming to be a legitimate employer (XXXX) but later revealed to be impersonated.": 1,
+      "Pressure tactics to deposit check and transfer funds immediately.": 1,
+      "Unsolicited contact via email (initially appeared in college email, though the victim replied)": 1,
+      "Communication from personal email (implied by the nature of the follow-up messages and lack of formal company domain)": 1,
+      "Pressure tactics ('couldn't wait since it would delay their schedule time')": 1
+    },
+    "financial": {
+      "Victim was convinced to send money under false pretenses.": 1,
+      "Requests for payment for materials for an internship (likely fake training or equipment).": 1,
+      "Victim was asked to send money back in 'waves', indicating a structured attempt to extract funds before the fraud was fully realized.": 1,
+      "The initial check was discovered to be fake and reversed.": 1,
+      "The scammer requested money back digitally shortly after the fake check was cashed, before it bounced.": 1
+    },
+    "job_posting": {
+      "Vague job description or responsibilities ('completing sets and reviewing albums and singles').": 1,
+      "The job was presented as legitimate remote work, which can be a common lure for scams.": 1,
+      "The initial job offer seemed legitimate, but the subsequent actions revealed the scam.": 1,
+      "Extremely high pay for minimal experience/effort (implied by the internship offer and the ease with which tasks were supposedly completed)": 1,
+      "Vague job description or responsibilities (no clear tasks mentioned beyond obtaining materials)": 1
+    },
+    "hiring_process": {
+      "The job offer and tasks were performed without the victim realizing it was a scam until after completion.": 1,
+      "The communication with alleged representatives of XXXX was part of the fraudulent process.": 1,
+      "The scammer provided documentation that mimicked a real company, creating a false sense of legitimacy.": 1,
+      "The scammer was pushy for immediate action (depositing check, transferring funds).": 1,
+      "Job offer without interview or after brief text exchange (no formal interview, only email and text communication)": 1
+    },
+    "work_activity": {
+      "Instructed to move money between accounts (implied by 'funds were transferred through transactions that I now understand were part of the scam').": 1,
+      "The nature of the tasks ('completing sets and reviewing albums and singles') could be a cover for money laundering or other illicit financial activities, making it a money mule-like scenario.": 1,
+      "Instructed to transfer money to a fake vendor.": 1,
+      "The nature of the 'work environment' justified the immediate deposit and transfer, a common tactic in money mule scams.": 1,
+      "Asked to receive and reship packages to unknown addresses (implied by the request to deposit checks and buy materials, which could be for reshipment)": 1
+    }
+  },
+  "top_vulnerability_factors": {
+    "Seeking remote/work-from-home opportunities": 2,
+    "Seeking remote/work-from-home opportunities.": 1,
+    "Financial hardship (implied by 'significant financial hardship').": 1,
+    "Employment desperation (implied by seeking work in 'this economy')": 1,
+    "Trust in official-looking documentation": 1,
+    "Employment desperation (recently unemployed, financial hardship) - seeking to pay off student bills": 1,
+    "Seeking remote/work-from-home opportunities (implied by the initial email and the nature of the scam)": 1,
+    "Limited job search experience (implied by a college student relying on a college email for internship offers and not immediately recognizing red flags)": 1,
+    "Employment desperation (recently unemployed, financial hardship)": 1,
+    "Limited job search experience": 1
+  },
+  "scam_type_distribution": {
+    "Fake Check / Money Mule Scam": 2,
+    "Advance Fee Scam / Fake Employment": 1,
+    "Fake Check Scam": 1,
+    "Fake Check / Advance Fee Scam": 1,
+    "Fake Check / Payment Scam": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 11310670,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11258229,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11629506,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11582419,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11338911,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 11913356,
+      "risk_score": 95
+    }
+  ],
+  "metadata": {
+    "model_name": "gemini-2.5-flash-lite",
+    "run_time_seconds": 9.080769062042236
+  }
+}

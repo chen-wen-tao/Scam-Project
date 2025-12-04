@@ -1,0 +1,103 @@
+{
+  "summary": {
+    "total_complaints": 26,
+    "high_risk_complaints": 16,
+    "high_risk_percentage": 61.53846153846154,
+    "average_risk_score": 58.57692307692308,
+    "median_risk_score": 95.0,
+    "high_risk_threshold": 70
+  },
+  "risk_distribution": {
+    "0": 10,
+    "95": 15,
+    "98": 1
+  },
+  "top_red_flags": {
+    "Contacted by a company claiming to be XXXX, a legitimate employer.": 1,
+    "Employer initiated contact via email after resume submission.": 1,
+    " vague description of business": 1,
+    " requests for personal information (implied by sending a check)": 1,
+    " sending a check for a large amount": 1,
+    " requesting a portion of the check amount be sent elsewhere": 1,
+    " seemingly unrelated reasons for sending money (medical bill, doctor's fees)": 1,
+    " the amount sent back is likely close to or exactly the amount of the check, creating a net loss for the victim": 1,
+    " N/A (This was initiated by a direct message, not a job posting)": 1,
+    " bypassed any formal hiring process": 1
+  },
+  "scam_type_distribution": {
+    "Unknown": 10,
+    "Fake Check Scam": 7,
+    "Fake Check/Advance Fee Scam": 3,
+    "Fake Check Scam / Money Mule Scam": 2,
+    "Advance Fee Scam": 1,
+    "Fake Check/Money Order Scam": 1,
+    "Fake Job Offer Scam / Fake Check Scam": 1,
+    "Fake Check / Advance Fee Scam": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 11310670,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11258229,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 11629506,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11338911,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11582419,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11913356,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11576878,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4635636,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4516979,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5903957,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5834474,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5805173,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6504818,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 3604669,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6419337,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4239683,
+      "risk_score": 95
+    }
+  ]
+}

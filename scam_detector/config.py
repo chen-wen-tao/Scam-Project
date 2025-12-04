@@ -35,10 +35,22 @@ SCAM_INDICATORS = {
     ]
 }
 
-# Gemini model fallback list (prioritize faster models)
-# gemini-1.5-flash is faster and cheaper, good for batch processing
-# gemini-1.5-pro is more accurate but slower
-GEMINI_MODELS = ['gemini-1.5-flash', 'gemini-2.0-flash-exp', 'gemini-1.5-pro', 'gemini-1.0-pro']
+# Gemini model fallback list (prioritize models with better rate limits: https://ai.google.dev/gemini-api/docs/rate-limits)
+# Priority order based on RPD (Requests Per Day) and RPM (Requests Per Minute):
+# 1. gemini-2.5-flash-lite: 1,000 RPD, 15 RPM (best for batch processing - 4x more requests than 2.5-flash)
+# 2. gemini-2.0-flash-lite: 200 RPD, 30 RPM (fastest, but lower daily limit)
+# 3. gemini-2.0-flash: 200 RPD, 15 RPM, 1M TPM (high token limit)
+# 4. gemini-2.5-flash: 250 RPD, 10 RPM (current default, but hits quota easily)
+# 5. gemini-2.5-pro: 50 RPD, 2 RPM (best quality but slowest and lowest quota)
+GEMINI_MODELS = [
+    'gemini-2.5-flash-lite',      # Best balance: 1,000 RPD, 15 RPM
+    'gemini-2.0-flash-lite',       # Fastest: 30 RPM, 200 RPD
+    'gemini-2.0-flash',            # High TPM: 1M tokens, 200 RPD
+    'gemini-2.5-flash',            # Current default (250 RPD limit)
+    'gemini-1.5-flash',            # Fallback (deprecated but still works)
+    'gemini-2.5-pro',              # Best quality (slow, low quota)
+    'gemini-1.5-pro'               # Legacy fallback
+]
 
 # Default file names
 DEFAULT_RESULTS_CSV = "scam_analysis_results.csv"
@@ -46,4 +58,10 @@ DEFAULT_REPORT_JSON = "scam_analysis_report.json"
 
 # Performance optimization settings
 MAX_TEXT_LENGTH = 3000  # Truncate complaints longer than this (chars) to speed up processing
-DEFAULT_WORKERS = 2  # Default number of parallel workers for batch processing (set to 2 to avoid rate limits)
+DEFAULT_WORKERS = 3  # Default number of parallel workers for batch processing (set to 2 to avoid rate limits with free tier)
+
+# Rate limiting settings for gemini-2.5-flash-lite (15 RPM)
+# Conservative: 14 requests per minute to leave buffer
+RATE_LIMIT_RPM = 14  # Requests per minute (conservative limit)
+RATE_LIMIT_WINDOW = 60  # Time window in seconds
+MIN_REQUEST_INTERVAL = RATE_LIMIT_WINDOW / RATE_LIMIT_RPM  # ~4.3 seconds between requests

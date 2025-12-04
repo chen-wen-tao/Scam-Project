@@ -141,13 +141,16 @@ class JobScamDetector:
         
         return results_df
     
-    def generate_report(self, results_df: Optional[pd.DataFrame] = None, report_filename: Optional[str] = None) -> Dict[str, Any]:
+    def generate_report(self, results_df: Optional[pd.DataFrame] = None, report_filename: Optional[str] = None, output_format: str = 'json', model_name: Optional[str] = None, run_time_seconds: Optional[float] = None) -> Dict[str, Any]:
         """
         Generate comprehensive analysis report
         
         Args:
             results_df: Optional DataFrame with analysis results (if None, loads from detect_res/)
             report_filename: Optional report filename
+            output_format: Output format - 'json', 'pdf', or 'both' (default: 'json')
+            model_name: Optional model name used for analysis
+            run_time_seconds: Optional total run time in seconds
             
         Returns:
             Report dictionary
@@ -163,9 +166,22 @@ class JobScamDetector:
         
         report = self.report_generator.generate_report(results_df)
         
-        # Save report
-        report_path = self.file_handler.save_report_json(report, report_filename)
-        logger.info(f"Report saved to {report_path}")
+        # Add metadata to report
+        if model_name:
+            report['metadata'] = report.get('metadata', {})
+            report['metadata']['model_name'] = model_name
+        if run_time_seconds is not None:
+            report['metadata'] = report.get('metadata', {})
+            report['metadata']['run_time_seconds'] = run_time_seconds
+        
+        # Save report in requested format(s)
+        if output_format in ['json', 'both']:
+            report_path = self.file_handler.save_report_json(report, report_filename)
+            logger.info(f"Report saved to {report_path}")
+        
+        if output_format in ['pdf', 'both']:
+            pdf_path = self.file_handler.save_report_pdf(report, results_df=results_df, filename=report_filename, model_name=model_name, run_time_seconds=run_time_seconds)
+            logger.info(f"PDF report saved to {pdf_path}")
         
         return report
 

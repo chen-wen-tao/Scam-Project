@@ -1,0 +1,62 @@
+{
+  "summary": {
+    "total_complaints": 6,
+    "high_risk_complaints": 6,
+    "high_risk_percentage": 100.0,
+    "average_risk_score": 95.83333333333333,
+    "median_risk_score": 95.0,
+    "high_risk_threshold": 70
+  },
+  "risk_distribution": {
+    "95": 5,
+    "100": 1
+  },
+  "top_red_flags": {
+    "Contacted by a company claiming to be XXXX, but later confirmed by the actual XXXX owner to be an impersonation.": 1,
+    "Required to send money under false pretenses for the job.": 1,
+    "Issuance of a 'reimbursement' digital check for funds paid out-of-pocket.": 1,
+    "Sudden notification of insufficient balance leading to total loss of savings.": 1,
+    "Fake checks that eventually bounce or are revealed as fraudulent.": 1,
+    "The job was obtained via email solicitation, not a formal job posting.": 1,
+    "Rapid progression from initial contact to payment requests without formal interviews or background checks.": 1,
+    "The process relied on digital communication and check manipulation.": 1,
+    "No clear indication of the company's legitimacy or physical location.": 1,
+    "The nature of the 'internship' or 'work activity' is not described, which is common in scams to keep the victim disengaged from the core fraudulent activity.": 1
+  },
+  "scam_type_distribution": {
+    "Fake Check/Advance Fee Scam": 2,
+    "Fake Check Scam": 2,
+    "Impersonation Scam": 1,
+    "Fake Check Scam / Advance Fee Scam": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 11310670,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11258229,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11629506,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11338911,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11582419,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11913356,
+      "risk_score": 95
+    }
+  ],
+  "metadata": {
+    "model_name": "gemini-2.5-flash-lite",
+    "run_time_seconds": 17.64295506477356
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "summary": {
+    "total_complaints": 107,
+    "high_risk_complaints": 28,
+    "high_risk_percentage": 26.168224299065418,
+    "average_risk_score": 24.672897196261683,
+    "median_risk_score": 0.0,
+    "high_risk_threshold": 70
+  },
+  "risk_distribution": {
+    "0": 79,
+    "85": 2,
+    "95": 26
+  },
+  "top_red_flags": {
+    "Unsolicited job offer": 2,
+    "Rapid hiring process": 2,
+    "Issuance of a check for equipment purchase exceeding the actual purchase cost": 1,
+    "Lack of a website": 1,
+    "Job posting disappears after the applicant has applied": 1,
+    "Financial institutions unable to reverse the fraudulent transaction": 1,
+    "Check bounced": 1,
+    "Instructions to transfer funds to a third-party account": 1,
+    "Pressure to use personal funds to pay the 'vendor' upfront": 1,
+    "Unsolicited job offer via email": 1
+  },
+  "scam_type_distribution": {
+    "Unknown": 79,
+    "Fake Check Scam": 12,
+    "Check Fraud/Advance Fee Scam": 2,
+    "Phantom Debt Collection": 1,
+    "Job Scam with Advance Fee": 1,
+    "Impersonation/Fraudulent Scheme": 1,
+    "Check Fraud/Counterfeit Checks, Account Closure due to potential Fraud": 1,
+    "Impersonation/Phishing": 1,
+    "Advance Fee Fraud": 1,
+    "Check Washing/Money Mule": 1,
+    "Debt Collection Fraud": 1,
+    "Payment Processing / Money Mule": 1,
+    "Money Mule/Payment Processing Scam": 1,
+    "Counterfeit Check/Fraudulent Transaction": 1,
+    "Money Mule/Wire Transfer Scam": 1,
+    "Money Mule/Check Cashing Scam": 1,
+    "Online Payment Fraud": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 1306236,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 1617882,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2060433,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2105037,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2317878,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2105053,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2318180,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2693172,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2949134,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 3082144,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 3194894,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 3139446,
+      "risk_score": 85
+    },
+    {
+      "complaint_id": 3613259,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 3604669,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4129988,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4035380,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4208330,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4239683,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4306165,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4266841,
+      "risk_score": 85
+    },
+    {
+      "complaint_id": 4306200,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4429479,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4553771,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4516979,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4635636,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4707982,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5215412,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5187241,
+      "risk_score": 95
+    }
+  ]
+}

@@ -1,0 +1,549 @@
+{
+  "summary": {
+    "total_complaints": 107,
+    "high_risk_complaints": 105,
+    "high_risk_percentage": 98.13084112149532,
+    "average_risk_score": 92.92523364485982,
+    "median_risk_score": 95.0,
+    "high_risk_threshold": 70
+  },
+  "risk_distribution": {
+    "0": 1,
+    "5": 1,
+    "70": 1,
+    "85": 1,
+    "90": 3,
+    "95": 97,
+    "98": 1,
+    "100": 2
+  },
+  "top_red_flags": {
+    "Instructed to move money between accounts": 13,
+    "Vague job description or responsibilities": 12,
+    "Job offer without interview or after brief text exchange": 12,
+    "Immediate hiring/start date": 12,
+    "Asked to receive and reship packages to unknown addresses": 11,
+    "Extremely high pay for minimal experience/effort": 11,
+    "Requests payment upfront for any reason (equipment, training, background check)": 10,
+    "Requests financial information early in process (before conditional offer)": 10,
+    "No formal application or background check": 10,
+    "\"Too good to be true\" promises (work from home, set own hours, $5000+/month)": 7
+  },
+  "top_red_flags_by_category": {
+    "communication": {
+      "Communication from personal email (Gmail, Yahoo) not company domain": 5,
+      "Unsolicited contact via email/text/messaging app": 4,
+      "Unsolicited contact via email": 2,
+      "Unsolicited contact via messaging app (XXXX)": 2,
+      "Contact from an employer using an official-sounding email address (though this often can be spoofed or used by scammers)": 1
+    },
+    "financial": {
+      "Requests financial information early in process (before conditional offer)": 10,
+      "Requests payment upfront for any reason (equipment, training, background check)": 10,
+      "Asks for bank account, credit card, or SSN before job offer": 7,
+      "Requests payment upfront for any reason": 2,
+      "Instructed to endorse and forward funds (implied): While not explicitly stated, this is a common element of fake check scams where the victim is instructed to send a portion of the funds back or to another party.": 1
+    },
+    "job_posting": {
+      "Vague job description or responsibilities": 12,
+      "Extremely high pay for minimal experience/effort": 11,
+      "\"Too good to be true\" promises (work from home, set own hours, $5000+/month)": 7,
+      "Vague job description for a 'XXXX XXXX position' initially.": 1,
+      "Vague job description or responsibilities (data entry job, with implied minimal effort leading to payment of funds to vendors)": 1
+    },
+    "hiring_process": {
+      "Immediate hiring/start date": 12,
+      "Job offer without interview or after brief text exchange": 12,
+      "No formal application or background check": 10,
+      "Job offer accepted after a brief email exchange, implying a lack of a formal hiring process or interview.": 1,
+      "Completing an 'assignment' before full employment confirmation.": 1
+    },
+    "work_activity": {
+      "Instructed to move money between accounts": 13,
+      "Asked to receive and reship packages to unknown addresses": 11,
+      "Required to recruit others as primary job function": 7,
+      "Asked to receive and reship packages to unknown addresses (not explicitly mentioned, but a common tactic in similar scams)": 2,
+      "Instructed to process checks for customers.": 1
+    }
+  },
+  "top_vulnerability_factors": {
+    "Seeking remote/work-from-home opportunities": 23,
+    "Employment desperation (recently unemployed, financial hardship)": 13,
+    "Limited job search experience": 5,
+    "Seeking remote/work-from-home opportunities.": 5,
+    "Employment desperation (implied by falling victim to a job scam)": 3,
+    "Seeking remote/work-from-home opportunities (often targeted by these scams)": 2,
+    "Seeking remote/work-from-home opportunities (implied by the nature of the scam)": 2,
+    "Employment desperation (recently unemployed).": 2,
+    "Seeking remote/work-from-home opportunities (implied by believing they were working for a shipping company, which often has remote aspects).": 1,
+    "Likely employment desperation or a desire for supplemental income, leading them to accept a role that was not fully vetted.": 1
+  },
+  "scam_type_distribution": {
+    "Fake Check Scam": 29,
+    "Fake Check / Money Mule Scam": 24,
+    "Money Mule Scam": 9,
+    "Fake Check / Money Mule Scam Scheme": 5,
+    "Fake Check / Advance Fee Scam": 5,
+    "Fake Job / Money Mule Scam": 1,
+    "Fake Check Scam / Advance Fee Scam": 1,
+    "Fake Check / Business Impersonation Scam": 1,
+    "Fake Job Offer Leading To Money Mule Activity Or Payment Fraud": 1,
+    "Account Takeover / Identity Theft": 1,
+    "Identity Theft For Purchases / Money Mule": 1,
+    "Identity Theft For Financial Fraud": 1,
+    "Cryptocurrency Investment Fraud (Pig Butchering)": 1,
+    "Impersonation Scam": 1,
+    "Fake Check / Work Equipment Scam": 1,
+    "Advance-Fee Scam / Fake Job Scam With Extortion": 1,
+    "N / A": 1,
+    "Job Scam": 1,
+    "Identity Theft And Financial Fraud Through Fake Employment": 1,
+    "Identity Theft": 1,
+    "Fake Check / Wire Transfer Scam": 1,
+    "Fake Check Scam With Money Mule Component": 1,
+    "Money Mule Scam / Fake Job Scam": 1,
+    "Fake Placement / Staffing Scams": 1,
+    "Impersonation / Job Scam Leading To Financial Loss": 1,
+    "Fake Job / Payment Scam": 1,
+    "Payment Platform Scam": 1,
+    "None": 1,
+    "Phantom Debt / Extortion Scam": 1,
+    "Advance Fee Scam": 1,
+    "Money Mule / Fake Check Scam": 1,
+    "Fake Job Scam": 1,
+    "Check Fraud / Fake Payment Scam": 1,
+    "Fake Job Offer / Payment Scams": 1,
+    "Fake Check Scam (Money Mule Variant)": 1,
+    "Fake Employment / Office Supply Scam": 1,
+    "Fake Job Offer Leading To Money Mule Activity": 1,
+    "Fake Check Scam (Money Mule)": 1,
+    "Mystery Shopper Scam": 1,
+    "Job Scam Leading To Financial Loss": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 1306236,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2060433,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 1617882,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2105037,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2317878,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2105053,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2318180,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2693172,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2949134,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 3082144,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 3194894,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 3604669,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 3613259,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4129988,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4035380,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4208330,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4306165,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4239683,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4266841,
+      "risk_score": 70
+    },
+    {
+      "complaint_id": 4306200,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4429479,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4553771,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4516979,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4635636,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4707982,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5215412,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5187241,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5238372,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5310888,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5541457,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5632648,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5668688,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5762283,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5793778,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5788206,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5801649,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5805173,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5819576,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5833930,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5834474,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5844349,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5903957,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6184246,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6419337,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6427148,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6483849,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6504818,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6584888,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6703555,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6903972,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6927073,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7212558,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7283899,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7334108,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7616873,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7873197,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7672786,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7873321,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 8194212,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7877277,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 8423861,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 8790731,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 8714085,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 8951824,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 8988178,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 9047695,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 9351098,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 9095183,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 9352111,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 10042620,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 9480888,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 9709633,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 10136040,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11247126,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 10933101,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11258229,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11310670,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11338911,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11434062,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11498408,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11576878,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11578145,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11582419,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11589520,
+      "risk_score": 90
+    },
+    {
+      "complaint_id": 11629506,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11866982,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11879581,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11913356,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 12097919,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 12015613,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 12701836,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 12793732,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 13392030,
+      "risk_score": 90
+    },
+    {
+      "complaint_id": 13455953,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 13672904,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 13791386,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 14313741,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 13887496,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 14372163,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 14438348,
+      "risk_score": 85
+    },
+    {
+      "complaint_id": 14841507,
+      "risk_score": 90
+    },
+    {
+      "complaint_id": 14719848,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 14854703,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 15539713,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 15604144,
+      "risk_score": 95
+    }
+  ],
+  "metadata": {
+    "model_name": "gemini-2.5-flash-lite",
+    "run_time_seconds": 435.7844159603119
+  }
+}

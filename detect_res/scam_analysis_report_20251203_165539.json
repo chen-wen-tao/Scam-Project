@@ -1,0 +1,112 @@
+{
+  "summary": {
+    "total_complaints": 6,
+    "high_risk_complaints": 6,
+    "high_risk_percentage": 100.0,
+    "average_risk_score": 95.5,
+    "median_risk_score": 95.0,
+    "high_risk_threshold": 70
+  },
+  "risk_distribution": {
+    "95": 5,
+    "98": 1
+  },
+  "top_red_flags": {
+    "Unsolicited contact via email (college email, though this could be a legitimate internship program)": 1,
+    "Sent digital checks for the victim to deposit and then send money back": 1,
+    "Immediate hiring/start date implied by the quick progression from email reply to sending checks.": 1,
+    "Job offer without a formal interview (implied by 'replied to the email so that I could get the role' and subsequent text communication)": 1,
+    "Implied 'too good to be true' promise of paid internship leading to significant financial loss.": 1,
+    "Extremely high pay for minimal experience/effort (implied by 'internship' role and the promise of reimbursement via checks which is unsustainable)": 1,
+    "Financial information implicitly requested for payment processing (though not explicitly stated as bank account details, the use of checks implies it)": 1,
+    "The 'reimbursement' via digital check is a classic fake check scam tactic": 1,
+    "Requests payment upfront for materials for internship": 1,
+    "Instructed to move money between accounts (depositing fake checks and then sending real money back)": 1
+  },
+  "top_red_flags_by_category": {
+    "communication": {
+      "Unsolicited contact via email (college email, though this could be a legitimate internship program)": 1,
+      "Communication primarily through email and text/messaging app": 1,
+      "Pressure tactics to send money quickly (\"couldn't wait since it would delay their schedule time\")": 1,
+      "Pushy communication to transfer funds quickly.": 1,
+      "Unsolicited contact via email/text/messaging app (implied by being contacted by a company)": 1
+    },
+    "financial": {
+      "Requests payment upfront (indirectly, by asking the victim to deposit checks and buy materials)": 1,
+      "Requests for financial transactions (implied by sending checks to purchase equipment).": 1,
+      "The check reversed itself due to being fake.": 1,
+      "Asked to send money back in waves ('digitally' and then implied further transfers) after cashing the fake check.": 1,
+      "The check was for a significant amount ({[AMOUNT]}) which is intended to appear legitimate.": 1
+    },
+    "job_posting": {
+      "Potentially \"too good to be true\" promises (implied by an internship requiring minimal interaction and offering to pay for materials).": 1,
+      "The offer was for a remote job, which can be more susceptible to scams.": 1,
+      "Implied a need for immediate action due to the 'nature of work environment and the holidays'.": 1,
+      "Extremely high pay for minimal experience/effort (implied by 'completing sets and reviewing albums and singles' for significant pay)": 1,
+      "Vague job description or responsibilities ('completing sets and reviewing albums and singles' is vague)": 1
+    },
+    "hiring_process": {
+      "Job offer without a formal interview or with minimal interaction (only emails)": 1,
+      "Immediate hiring/start date (implied by the urgency to deposit checks and buy materials)": 1,
+      "The scammer provided documentation that appeared legitimate and matched a known company.": 1,
+      "The victim was asked to deposit a check and then transfer funds, a common tactic in fake check scams.": 1,
+      "The scammer's urgency for fund transfer suggests a lack of a genuine hiring process.": 1
+    },
+    "work_activity": {
+      "Instructed to receive and reship packages (implied by the need to buy materials for them)": 1,
+      "Instructed to move money between accounts (depositing checks and then sending money from savings)": 1,
+      "The request to transfer funds to a 'fake vendor' for equipment aligns with money mule or advance fee components of scams where victims are used to facilitate illicit transactions or pay for phantom services.": 1,
+      "Instructed to move money between accounts (explicitly stated: 'funds were transferred through transactions that I now understand were part of the scam, as the fraudulent individuals convinced me to send money under false pretenses')": 1,
+      "Asked to receive and reship packages to unknown addresses (this is a common variation, though not explicitly stated in this complaint, the money movement strongly suggests it)": 1
+    }
+  },
+  "top_vulnerability_factors": {
+    "Employment desperation (to help pay off student bills)": 1,
+    "Seeking remote/work-from-home opportunities (implied by the nature of the \"internship\" which involved remote transactions)": 1,
+    "Limited job search experience (implied by a college student responding to an unsolicited email and not questioning the process further initially)": 1,
+    "Seeking remote/work-from-home opportunities": 1,
+    "Employment desperation (implied by seeking work in 'this economy')": 1,
+    "Trust in seemingly legitimate documentation and impersonated company identity.": 1,
+    "Employment desperation (recently unemployed, financial hardship) (implied by seeking remote work and falling for the scam)": 1,
+    "Seeking remote/work-from-home opportunities (explicitly stated: 'offering remote work')": 1,
+    "Employment desperation (avidly trying to get a XXXX XXXX XXXX XXXX)": 1,
+    "Seeking remote/work-from-home opportunities (implied by the need to purchase equipment for a job).": 1
+  },
+  "scam_type_distribution": {
+    "Fake Check Scam": 2,
+    "Fake Check / Advance Fee Scam": 1,
+    "Fake Job Offer Scam": 1,
+    "Fake Check / Payment Scam": 1,
+    "Fake Check Scam / Advance Fee Scam": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 11629506,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 11258229,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11310670,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11582419,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11338911,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11913356,
+      "risk_score": 95
+    }
+  ],
+  "metadata": {
+    "model_name": "gemini-2.5-flash-lite",
+    "run_time_seconds": 9.398881912231445
+  }
+}

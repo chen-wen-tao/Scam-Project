@@ -30,12 +30,37 @@ def _compute_framework_summary():
     if not framework:
         return "Use standard job scam classification (Ravenelle et al., 2022)."
     
-    # Ultra-minimal summary - just category names
+    # Build summary with red flag categories and their items
+    summary_parts = []
+    
     if "scam_categories" in framework:
         categories = list(framework["scam_categories"].keys())
-        return f"Categories: {', '.join(categories)}"
+        summary_parts.append(f"Scam Categories: {', '.join(categories)}")
     
-    return ""
+    if "red_flag_categories" in framework:
+        red_flags = framework["red_flag_categories"]
+        summary_parts.append("Red Flag Categories:")
+        for category, items in red_flags.items():
+            if isinstance(items, dict):
+                # Dictionary format: show category and item count
+                item_list = list(items.values())[:3]  # Show first 3 as examples
+                examples = "; ".join(item_list)
+                summary_parts.append(f"  - {category}: {examples}... ({len(items)} items)")
+            elif isinstance(items, list):
+                # Legacy array format
+                examples = "; ".join(items[:3])
+                summary_parts.append(f"  - {category}: {examples}... ({len(items)} items)")
+    
+    if "vulnerability_factors" in framework:
+        vuln_factors = framework["vulnerability_factors"]
+        if isinstance(vuln_factors, dict):
+            examples = "; ".join(list(vuln_factors.values())[:3])
+            summary_parts.append(f"Vulnerability Factors: {examples}... ({len(vuln_factors)} items)")
+        elif isinstance(vuln_factors, list):
+            examples = "; ".join(vuln_factors[:3])
+            summary_parts.append(f"Vulnerability Factors: {examples}... ({len(vuln_factors)} items)")
+    
+    return "\n".join(summary_parts) if summary_parts else ""
 
 @lru_cache(maxsize=1)
 def _get_framework_summary():
@@ -45,7 +70,21 @@ def _get_framework_summary():
 # Pre-compute and cache the framework summary at module load time for instant access
 _FRAMEWORK_SUMMARY = _compute_framework_summary()
 
-SCAM_ANALYSIS_PROMPT_TEMPLATE = """Analyze this job complaint for scam indicators. Categories: {framework_summary}
+SCAM_ANALYSIS_PROMPT_TEMPLATE = """Analyze this job complaint for scam indicators.
+
+Framework Reference:
+{framework_summary}
+
+IMPORTANT: Use the exact red_flag categories from the framework:
+- "communication": Communication-related red flags (unsolicited contact, poor grammar, pressure tactics, etc.)
+- "financial": Financial red flags (payment requests, bank info requests, fake checks, etc.)
+- "job_posting": Job posting red flags (unrealistic pay, vague descriptions, suspicious postings, etc.)
+- "hiring_process": Hiring process red flags (no interview, immediate hiring, document requests, etc.)
+- "work_activity": Work activity red flags (money mule tasks, package reshipping, payment processing, etc.)
+
+For each category, identify specific red flags found in the complaint. Match them to framework items when possible, but describe them naturally if they don't exactly match.
+
+For vulnerability_factors, identify factors that made the victim susceptible (employment desperation, limited experience, seeking remote work, etc.)
 
 Return JSON:
 {{

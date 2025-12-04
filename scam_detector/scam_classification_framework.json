@@ -106,58 +106,58 @@
     }
   },
   "red_flag_categories": {
-    "communication": [
-      "Unsolicited contact via email/text/messaging app",
-      "Communication from personal email (Gmail, Yahoo) not company domain",
-      "Poor grammar, spelling errors, or unprofessional language",
-      "Pressure to respond immediately or accept offer quickly",
-      "Interview conducted entirely via text/chat (no video/phone)",
-      "Vague or evasive answers about company/role details"
-    ],
-    "financial": [
-      "Requests payment upfront for any reason (equipment, training, background check)",
-      "Asks for bank account, credit card, or SSN before job offer",
-      "Requests financial information early in process (before conditional offer)",
-      "Promises unrealistic salary for skill level/experience",
-      "Asks to deposit check and return portion of money",
-      "Requires purchase of starter kit or inventory",
-      "Payment via wire transfer, cryptocurrency, gift cards, or prepaid cards"
-    ],
-    "job_posting": [
-      "Extremely high pay for minimal experience/effort",
-      "Vague job description or responsibilities",
-      "\"Too good to be true\" promises (work from home, set own hours, $5000+/month)",
-      "No legitimate company information or website",
-      "Missing or suspicious contact information",
-      "Posted on multiple platforms with different company names",
-      "Location listed as coordinates instead of address"
-    ],
-    "hiring_process": [
-      "Job offer without interview or after brief text exchange",
-      "No formal application or background check",
-      "Immediate hiring/start date",
-      "Asks for personal documents (ID, SSN) before conditional offer",
-      "Sends offer letter with spelling/formatting errors",
-      "Unable to verify company exists or has legitimate online presence"
-    ],
-    "work_activity": [
-      "Asked to receive and reship packages to unknown addresses",
-      "Instructed to move money between accounts",
-      "Required to recruit others as primary job function",
-      "Tasks involve receiving checks and making purchases",
-      "Work involves processing payments for others"
-    ]
+    "communication": {
+      "unsolicited_contact": "Unsolicited contact via email/text/messaging app",
+      "personal_email": "Communication from personal email (Gmail, Yahoo) not company domain",
+      "poor_grammar": "Poor grammar, spelling errors, or unprofessional language",
+      "pressure_tactics": "Pressure to respond immediately or accept offer quickly",
+      "text_only_interview": "Interview conducted entirely via text/chat (no video/phone)",
+      "vague_answers": "Vague or evasive answers about company/role details"
+    },
+    "financial": {
+      "upfront_payment": "Requests payment upfront for any reason (equipment, training, background check)",
+      "bank_info_request": "Asks for bank account, credit card, or SSN before job offer",
+      "early_financial_info": "Requests financial information early in process (before conditional offer)",
+      "unrealistic_salary": "Promises unrealistic salary for skill level/experience",
+      "fake_check_scheme": "Asks to deposit check and return portion of money",
+      "starter_kit_purchase": "Requires purchase of starter kit or inventory",
+      "suspicious_payment_methods": "Payment via wire transfer, cryptocurrency, gift cards, or prepaid cards"
+    },
+    "job_posting": {
+      "unrealistic_pay": "Extremely high pay for minimal experience/effort",
+      "vague_description": "Vague job description or responsibilities",
+      "too_good_to_be_true": "\"Too good to be true\" promises (work from home, set own hours, $5000+/month)",
+      "no_company_info": "No legitimate company information or website",
+      "suspicious_contact": "Missing or suspicious contact information",
+      "multiple_platforms": "Posted on multiple platforms with different company names",
+      "coordinates_location": "Location listed as coordinates instead of address"
+    },
+    "hiring_process": {
+      "no_interview": "Job offer without interview or after brief text exchange",
+      "no_formal_process": "No formal application or background check",
+      "immediate_hiring": "Immediate hiring/start date",
+      "early_document_request": "Asks for personal documents (ID, SSN) before conditional offer",
+      "poor_offer_letter": "Sends offer letter with spelling/formatting errors",
+      "unverifiable_company": "Unable to verify company exists or has legitimate online presence"
+    },
+    "work_activity": {
+      "package_reshipping": "Asked to receive and reship packages to unknown addresses",
+      "money_movement": "Instructed to move money between accounts",
+      "recruitment_focus": "Required to recruit others as primary job function",
+      "check_processing": "Tasks involve receiving checks and making purchases",
+      "payment_processing": "Work involves processing payments for others"
+    }
   },
-  "vulnerability_factors": [
-    "Employment desperation (recently unemployed, financial hardship)",
-    "Limited job search experience",
-    "Seeking remote/work-from-home opportunities",
-    "Young/inexperienced job seeker",
-    "Non-native English speaker",
-    "Urgency/time pressure (bills due, emergency expenses)",
-    "Social isolation (limited network to verify opportunity)",
-    "Specific demographic targeting (students, seniors, gig workers)"
-  ],
+  "vulnerability_factors": {
+    "employment_desperation": "Employment desperation (recently unemployed, financial hardship)",
+    "limited_experience": "Limited job search experience",
+    "seeking_remote": "Seeking remote/work-from-home opportunities",
+    "young_inexperienced": "Young/inexperienced job seeker",
+    "non_native_speaker": "Non-native English speaker",
+    "urgency_pressure": "Urgency/time pressure (bills due, emergency expenses)",
+    "social_isolation": "Social isolation (limited network to verify opportunity)",
+    "demographic_targeting": "Specific demographic targeting (students, seniors, gig workers)"
+  },
   "risk_levels": ["Low", "Medium", "High", "Critical"],
   "evidence_strength_levels": ["Strong", "Moderate", "Weak"]
 }

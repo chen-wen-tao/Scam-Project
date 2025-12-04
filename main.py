@@ -106,7 +106,8 @@ def main():
         results_df = detector.analyze_dataset(
             str(input_path),
             output_filename=args.results_file,
-            workers=args.workers
+            workers=args.workers,
+            prompt_mode=args.prompt_mode
         )
         
         # Calculate run time

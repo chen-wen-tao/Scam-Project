@@ -58,10 +58,12 @@ DEFAULT_REPORT_JSON = "scam_analysis_report.json"
 
 # Performance optimization settings
 MAX_TEXT_LENGTH = 3000  # Truncate complaints longer than this (chars) to speed up processing
-DEFAULT_WORKERS = 3  # Default number of parallel workers for batch processing (set to 2 to avoid rate limits with free tier)
+DEFAULT_WORKERS = 1  # Default number of parallel workers (1 for free tier to avoid rate limits, increase if you have paid tier)
 
-# Rate limiting settings for gemini-2.5-flash-lite (15 RPM)
-# Conservative: 14 requests per minute to leave buffer
-RATE_LIMIT_RPM = 14  # Requests per minute (conservative limit)
+# Rate limiting settings for gemini-2.5-flash-lite (15 RPM free tier)
+# Very conservative: 12 requests per minute to leave buffer for concurrent workers
+# With 1 worker: ~5 seconds between requests
+# With 2 workers: ~10 seconds between requests (each worker waits)
+RATE_LIMIT_RPM = 12  # Requests per minute (very conservative for free tier)
 RATE_LIMIT_WINDOW = 60  # Time window in seconds
-MIN_REQUEST_INTERVAL = RATE_LIMIT_WINDOW / RATE_LIMIT_RPM  # ~4.3 seconds between requests
+MIN_REQUEST_INTERVAL = RATE_LIMIT_WINDOW / RATE_LIMIT_RPM  # ~5 seconds between requests

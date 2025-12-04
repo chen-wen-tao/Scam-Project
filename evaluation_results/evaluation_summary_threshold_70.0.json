@@ -1,0 +1,61 @@
+{
+  "threshold": 70.0,
+  "binary_metrics": {
+    "accuracy": 0.7777777777777778,
+    "precision": 0.95,
+    "recall": 0.7916666666666666,
+    "f1": 0.8636363636363636
+  },
+  "category_metrics": {
+    "not_scam_irrelevant": {
+      "f1": 0.4,
+      "precision": 0.2857142857142857,
+      "recall": 0.6666666666666666,
+      "support": 3
+    },
+    "scam_job": {
+      "f1": 0.09523809523809523,
+      "precision": 0.05,
+      "recall": 1.0,
+      "support": 1
+    },
+    "scam_other": {
+      "f1": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "support": 23
+    }
+  },
+  "confusion_matrix_binary": [
+    [
+      2,
+      1
+    ],
+    [
+      5,
+      19
+    ]
+  ],
+  "confusion_matrix_multi": [
+    [
+      2,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      0
+    ],
+    [
+      5,
+      18,
+      0
+    ]
+  ],
+  "categories": [
+    "not_scam_irrelevant",
+    "scam_job",
+    "scam_other"
+  ]
+}

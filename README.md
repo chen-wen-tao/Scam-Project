@@ -33,7 +33,7 @@ A comprehensive AI-powered system for detecting job scams using Google Gemini LL
 
 3. **Install Python dependencies:**
    ```bash
-   pip install -r requirements.txt
+   pip3 install -r requirements.txt
    ```
 
 4. **Get Google Gemini API Key:**

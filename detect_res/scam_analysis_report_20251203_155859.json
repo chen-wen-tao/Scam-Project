@@ -1,0 +1,56 @@
+{
+  "summary": {
+    "total_complaints": 6,
+    "high_risk_complaints": 6,
+    "high_risk_percentage": 100.0,
+    "average_risk_score": 95.0,
+    "median_risk_score": 95.0,
+    "high_risk_threshold": 70
+  },
+  "risk_distribution": {
+    "95": 6
+  },
+  "top_red_flags": {
+    "Impersonation of a legitimate company (XXXX)": 1,
+    "Lack of payment despite completed work": 1,
+    "Job offer appears too good to be true, given the lack of safeguards.": 1,
+    "Request to use Zelle for financial transactions": 1,
+    "Use of fake checks for equipment purchase": 1,
+    "Company impersonation - claiming to be a company offering employment": 1,
+    "The specific job duties were never described in detail. ": 1,
+    "Lack of official company contact beyond the initial email.": 1,
+    "Unusual payment and reimbursement structure.": 1,
+    "No interview process.": 1
+  },
+  "scam_type_distribution": {
+    "Fake Check Scam": 4,
+    "Impersonation/Phishing": 1,
+    "Fake Check Scam/Overpayment Scam": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 11310670,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11258229,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11629506,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11338911,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11582419,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11913356,
+      "risk_score": 95
+    }
+  ]
+}

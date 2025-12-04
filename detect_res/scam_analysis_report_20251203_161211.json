@@ -1,0 +1,61 @@
+{
+  "summary": {
+    "total_complaints": 6,
+    "high_risk_complaints": 6,
+    "high_risk_percentage": 100.0,
+    "average_risk_score": 95.83333333333333,
+    "median_risk_score": 95.0,
+    "high_risk_threshold": 70
+  },
+  "risk_distribution": {
+    "95": 5,
+    "100": 1
+  },
+  "top_red_flags": {
+    "Extremely pushy for funds transfer": 1,
+    "Pressure to use out-of-pocket funds due to processing delays.": 1,
+    "Significant financial loss reported.": 1,
+    "Recipient of funds (the victim) was instructed to send money via Zelle.": 1,
+    "Used fake checks to 'purchase equipment'.": 1,
+    "Stated they 'see this scam all the time' but had no safety features.": 1,
+    "Claimed to be a company but their actions indicate otherwise.": 1,
+    "The actual work or tasks performed are not described, making it difficult to assess if it was legitimate.": 1,
+    "Use of digital checks for payment/reimbursement.": 1,
+    "Request for payment for materials for an internship.": 1
+  },
+  "scam_type_distribution": {
+    "Fake Check Scam": 4,
+    "Fake Check / Advance Fee Scam": 1,
+    "Impersonation Scam": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 11258229,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11310670,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11629506,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11338911,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11582419,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11913356,
+      "risk_score": 95
+    }
+  ],
+  "metadata": {
+    "model_name": "gemini-2.5-flash-lite",
+    "run_time_seconds": 8.275022029876709
+  }
+}

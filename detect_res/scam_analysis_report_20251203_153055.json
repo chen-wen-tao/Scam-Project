@@ -1,0 +1,134 @@
+{
+  "summary": {
+    "total_complaints": 26,
+    "high_risk_complaints": 21,
+    "high_risk_percentage": 80.76923076923077,
+    "average_risk_score": 80.6923076923077,
+    "median_risk_score": 100.0,
+    "high_risk_threshold": 70
+  },
+  "risk_distribution": {
+    "0": 5,
+    "98": 1,
+    "100": 20
+  },
+  "top_red_flags": {
+    "Scammer was 'extremely pushy' to transfer funds, indicating high-pressure tactics.": 1,
+    "Job duties involve using personal funds to send money to third-party 'vendors' for equipment.": 1,
+    "Rapid 'employment' after simply filling out paperwork, bypassing standard interview and vetting procedures.": 1,
+    "Contract agreement faxed, then immediate start without further verification.": 1,
+    "No in-person or video interviews mentioned, only phone contact with the 'boss' who conveniently works from home.": 1,
+    "The very first 'task' assigned was to deposit a check and then disburse funds to other parties, not typical job duties.": 1,
+    "Instructions to purchase gift cards as part of the job responsibilities.": 1,
+    "Request to download an unusual application ('wire application') for communication, deviating from standard professional communication channels.": 1,
+    "Receipt of a check for 'office supplies and equipment' with instructions to send money to 'vendors'.": 1,
+    "Instruction to send money via Venmo for business-related purchases (unusual for legitimate companies).": 1
+  },
+  "scam_type_distribution": {
+    "Unknown": 5,
+    "Fake Check Scam": 4,
+    "Advanced Fee Scam": 1,
+    "Fake Check / Overpayment Scam (via Fake Placement/Staffing)": 1,
+    "Fake Check/Overpayment Scam": 1,
+    "Money Mule / Fake Check Scam": 1,
+    "Financial Mark Scams": 1,
+    "Financial Mark Scams (Fake Check Scam)": 1,
+    "Fake Check / Overpayment Scam": 1,
+    "Fake Placement/Staffing Scams, Corporate Identity Theft": 1,
+    "Fake Check Scam / Advance-Fee Scam": 1,
+    "Corporate Identity Theft": 1,
+    "Fake Check/Overpayment Scam (Employment Fraud Variant)": 1,
+    "Work-from-Home/Equipment Scam (Fake Check)": 1,
+    "Fake Check Scam (Employment Scam variant)": 1,
+    "Overpayment Scam": 1,
+    "Fake Check Scam (often disguised as Fake Placement/Staffing Scams)": 1,
+    "Overpayment/Fake Check Scam": 1,
+    "Financial Mark Scams (Overpayment/Fake Check Scam)": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 11258229,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11310670,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11338911,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11629506,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11582419,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 11913356,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 11576878,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 4635636,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 4516979,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5834474,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5903957,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5805173,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 6504818,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 3604669,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 7212558,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 6419337,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 4035380,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 4239683,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 1306236,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 8714085,
+      "risk_score": 100
+    },
+    {
+      "complaint_id": 5788206,
+      "risk_score": 100
+    }
+  ]
+}

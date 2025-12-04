@@ -1,0 +1,55 @@
+{
+  "summary": {
+    "total_complaints": 6,
+    "high_risk_complaints": 6,
+    "high_risk_percentage": 100.0,
+    "average_risk_score": 95.0,
+    "median_risk_score": 95.0,
+    "high_risk_threshold": 70
+  },
+  "risk_distribution": {
+    "95": 6
+  },
+  "top_red_flags": {
+    "Impersonation of a known company (Assurant)": 1,
+    "Victim lost a significant amount of money through Zelle": 1,
+    "Unprofessional language or grammar (not explicitly stated but implied by lack of interview)": 1,
+    "Lack of detailed information about the company or the job itself": 1,
+    "The offer involved handling checks for purchases": 1,
+    "The checks were sent via email, a common tactic in fraud": 1,
+    "Instructions to deposit a check and then use the funds to make purchases on behalf of the employer": 1,
+    "The employer requested the victim to use personal funds initially, creating immediate financial risk.": 1,
+    "The checks were later determined to be fraudulent.": 1,
+    "The job was initially presented as a summer internship, which is often a lower-scrutiny position, making it more vulnerable to scams.": 1
+  },
+  "scam_type_distribution": {
+    "Fake Check Scam": 5,
+    "Impersonation/Fake Job Offer": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 11258229,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11310670,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11338911,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11629506,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11582419,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11913356,
+      "risk_score": 95
+    }
+  ]
+}

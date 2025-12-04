@@ -1,0 +1,525 @@
+{
+  "summary": {
+    "total_complaints": 107,
+    "high_risk_complaints": 107,
+    "high_risk_percentage": 100.0,
+    "average_risk_score": 94.53271028037383,
+    "median_risk_score": 95.0,
+    "high_risk_threshold": 70
+  },
+  "risk_distribution": {
+    "75": 2,
+    "80": 1,
+    "85": 2,
+    "90": 1,
+    "95": 91,
+    "98": 10
+  },
+  "top_red_flags": {
+    "Unsolicited email about a job opportunity.": 1,
+    "Victim's bank account is debited due to the fraudulent check": 1,
+    "Contacted via online platform (Indeed/XXXX)": 1,
+    "Instructions to send money back to the supposed employer": 1,
+    "Requirement to purchase equipment (often from a specific vendor or website)": 1,
+    "Request for sensitive personal information (ID, SSN) early in the process": 1,
+    "Hiring decision made very quickly after providing personal information": 1,
+    "Data entry clerk position is a common lure for these scams": 1,
+    "Check later returned as fraudulent": 1,
+    "Expected compensation but never paid": 1
+  },
+  "scam_type_distribution": {
+    "Fake Check Scam": 24,
+    "Fake Check / Advance Fee Scam": 5,
+    "Money Mule Scam": 5,
+    "Fake Check/Money Mule Scam": 4,
+    "Fake Check/Wire Transfer Scam": 4,
+    "Fake Check Scam / Advance Fee Scam": 4,
+    "Fake Check/Money Transfer Scam": 3,
+    "Fake Check/Advance Fee Scam": 3,
+    "Fake Check / Overpayment Scam": 2,
+    "Fake Job Offer / Check Cashing Scam": 2,
+    "Advance Fee Scam": 2,
+    "Fake Check Scam / Business Email Compromise": 2,
+    "Fake Check/Payment Scam": 1,
+    "Fake Check/Equipment Scam": 1,
+    "Cryptocurrency Fraud facilitated by Payment Platform": 1,
+    "Check Fraud/Fake Check Scam": 1,
+    "Account Deactivation Scam": 1,
+    "Fake Check / Equipment Scam": 1,
+    "Transaction Fraud / Banking System Exploitation": 1,
+    "Information Theft / Identity Theft": 1,
+    "Identity Theft for Fraudulent Purchases": 1,
+    "Fake Deposit/Money Laundering Scheme": 1,
+    "Identity Theft for Fraudulent Account Opening": 1,
+    "Fake Job Offer with Fake Check/Wire Transfer": 1,
+    "Fake Check Scam (Employment)": 1,
+    "Employee Identity Theft": 1,
+    "Identity Theft for Financial Gain": 1,
+    "Advance-Fee Scam / Job Scams": 1,
+    "Advance Fee Scam / Cryptocurrency Scam": 1,
+    "Fake Job Offer with Fake Check Scam": 1,
+    "Identity Theft/Financial Fraud": 1,
+    "Job Scam": 1,
+    "Cryptocurrency Investment Fraud (Pig Butchering)": 1,
+    "Fake Check / Business Scheme": 1,
+    "Mystery Shopper Scam": 1,
+    "Impersonation/Fraudulent Job Offer": 1,
+    "Check Kiting/Fraud": 1,
+    "Money Mule / Fake Check Scam": 1,
+    "Fake Job Offer with Fund Movement": 1,
+    "Debt Collection Fraud": 1,
+    "Payment App Scam": 1,
+    "Phantom Debt Collection Scam": 1,
+    "Car Wrap Scam": 1,
+    "Advance Fee Scam (Disguised as Job/Service)": 1,
+    "Unsolicited Payment/Deposit Scam": 1,
+    "Job Scam with Identity Theft and Financial Fraud": 1,
+    "Fake Check Scam / Business Email Compromise Variant": 1,
+    "Fake Check Deposit Scam": 1,
+    "Fake Check/Money Order Scam": 1,
+    "Fake Job Offer/Employment Scam": 1,
+    "Fake Check/Wire Fraud": 1,
+    "Investment Scam": 1,
+    "Fake Check/Fund Transfer Scam": 1,
+    "Fake Job Offer / Advance Fee Scam": 1,
+    "Fake Check Scam / Money Mule Scam": 1,
+    "Fake Check Scam (Advance Fee)": 1,
+    "Fake Check Scam (often combined with advance fee)": 1,
+    "Fake Equipment Purchase / Money Mule": 1,
+    "Fake Check / Business Equipment Scam": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 1306236,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 1617882,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2060433,
+      "risk_score": 85
+    },
+    {
+      "complaint_id": 2317878,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2105037,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2105053,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2318180,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2693172,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2949134,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 3082144,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 3139446,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 3194894,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 3604669,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 3613259,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4129988,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4035380,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4208330,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4239683,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4266841,
+      "risk_score": 80
+    },
+    {
+      "complaint_id": 4306165,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4429479,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 4306200,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4553771,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4516979,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4635636,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4707982,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5215412,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5187241,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5310888,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 5238372,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5541457,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5632648,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5668688,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5762283,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5793778,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5788206,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5801649,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5805173,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5819576,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5833930,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 5834474,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5844349,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6184246,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5903957,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6419337,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6483849,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6427148,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 6504818,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6584888,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6703555,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6903972,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7212558,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6927073,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7283899,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7334108,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7616873,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7873197,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7672786,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7873321,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 7877277,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 8194212,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 8423861,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 8714085,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 8951824,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 8790731,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 8988178,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 9047695,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 9095183,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 9351098,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 9352111,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 10042620,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 9480888,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 9709633,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 10933101,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 10136040,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11247126,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11258229,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11310670,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11338911,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11498408,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11434062,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11576878,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11578145,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11582419,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11630764,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11589520,
+      "risk_score": 75
+    },
+    {
+      "complaint_id": 11629506,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11866982,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11879581,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 11913356,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 12015613,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 12097919,
+      "risk_score": 90
+    },
+    {
+      "complaint_id": 12701836,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 13392030,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 12793732,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 13455953,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 13672904,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 13791386,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 14372163,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 14313741,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 13887496,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 14438348,
+      "risk_score": 75
+    },
+    {
+      "complaint_id": 14841507,
+      "risk_score": 85
+    },
+    {
+      "complaint_id": 14719848,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 14854703,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 15539713,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 15604144,
+      "risk_score": 95
+    }
+  ],
+  "metadata": {
+    "model_name": "gemini-2.5-flash-lite",
+    "run_time_seconds": 433.6762549877167
+  }
+}

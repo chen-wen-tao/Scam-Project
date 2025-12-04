@@ -95,4 +95,26 @@ class FileHandler:
         """Get path to report file"""
         filename = filename or DEFAULT_REPORT_JSON
         return self.output_dir / filename
+    
+    def save_report_pdf(self, report: dict, results_df=None, filename: Optional[str] = None, model_name: Optional[str] = None, run_time_seconds: Optional[float] = None) -> Path:
+        """
+        Save analysis report to PDF
+        
+        Args:
+            report: Report dictionary
+            results_df: Optional DataFrame with detailed results (needed for PDF)
+            filename: Optional custom filename
+            model_name: Optional model name used for analysis
+            run_time_seconds: Optional total run time in seconds
+            
+        Returns:
+            Path to saved PDF file
+        """
+        from .pdf_generator import PDFGenerator
+        import pandas as pd
+        
+        # Save PDF to report_res directory
+        report_res_dir = self.output_dir.parent / "report_res"
+        pdf_gen = PDFGenerator(output_dir=report_res_dir)
+        return pdf_gen.generate_pdf(report, results_df=results_df, filename=filename, model_name=model_name, run_time_seconds=run_time_seconds)
 

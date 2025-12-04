@@ -10,7 +10,7 @@
 ### 1. **Data Preparation & Merging**
 - Created `data_merge.py` to merge `data-ashley.csv` and `data-jessica.csv`
 - Removed duplicates by Complaint ID, extracted essential columns
-- Result: 108 unique complaints
+- Result: 108 unique complaints for job scam
 
 ### 2. **System Architecture**
 - Modular structure (`scam_detector/` package)
@@ -73,11 +73,13 @@ python main.py --input "data/complaints-2025-11-03-12-03.csv" --workers 2
 ---
 
 ## Future Work
+### Save the result from LLM and use Ml mode like random forest to see if any un-deteced pattern
 
-### 1. **PDF Report Generation**
+### 1. **PDF Report Generation** (In Progress)
 - Generate PDF reports instead of console output
 - Use `reportlab` or `weasyprint`
-- Files: `scam_detector/pdf_generator.py`, update `report_generator.py`
+- Files to create: `scam_detector/pdf_generator.py`
+- Files to update: `report_generator.py` (add PDF output support), `main.py` (add `--output-format pdf` option)
 
 ### 2. **F1 Analysis** (Future - Larger Dataset)
 - Label 200-500 complaints across categories

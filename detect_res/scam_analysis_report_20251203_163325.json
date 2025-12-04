@@ -1,0 +1,198 @@
+{
+  "summary": {
+    "total_complaints": 26,
+    "high_risk_complaints": 26,
+    "high_risk_percentage": 100.0,
+    "average_risk_score": 95.23076923076923,
+    "median_risk_score": 95.0,
+    "high_risk_threshold": 70
+  },
+  "risk_distribution": {
+    "95": 24,
+    "98": 2
+  },
+  "top_red_flags": {
+    "Requests payment upfront for any reason (equipment, training, background check)": 4,
+    "Requests financial information early in process (before conditional offer)": 3,
+    "Job offer without interview or after brief text exchange": 3,
+    "No formal application or background check": 3,
+    "Extremely high pay for minimal experience/effort": 2,
+    "Instructed to move money between accounts": 2,
+    "Asked to receive and reship packages to unknown addresses": 2,
+    "\"Too good to be true\" promises (work from home, set own hours, $5000+/month)": 2,
+    "Immediate hiring/start date": 2,
+    "Vague job description or responsibilities": 2
+  },
+  "top_red_flags_by_category": {
+    "communication": {
+      "Unsolicited contact (implied by the offer of a job)": 1,
+      "Pressure to deposit check and transfer funds quickly ('extremely pushy')": 1,
+      "Communication from personal email (Gmail, Yahoo) not company domain (implied by the lack of specific company domain mention and general tone)": 1,
+      "Poor grammar, spelling errors, or unprofessional language (not explicitly stated but the narrative suggests a lack of professional communication)": 1,
+      "Initiated communication via email (implied, as they state 'received an email')": 1
+    },
+    "financial": {
+      "Requests payment upfront for any reason (equipment, training, background check)": 4,
+      "Requests financial information early in process (before conditional offer)": 3,
+      "The initial wired funds were reversed after the victim sent money out, leading to a loss for the victim.": 1,
+      "The deposit of a check that later turned out to be fake or invalid, leading to losses.": 1,
+      "Instructions to send money via Zelle to unknown individuals.": 1
+    },
+    "job_posting": {
+      "Vague job description or responsibilities": 2,
+      "Extremely high pay for minimal experience/effort": 2,
+      "\"Too good to be true\" promises (work from home, set own hours, $5000+/month)": 2,
+      "Extremely high pay for minimal experience/effort (implied by the offer of a remote job that was too good to be true)": 1,
+      "Implied 'too good to be true' promise of easy money for minimal effort (completing an assignment and receiving a large check).": 1
+    },
+    "hiring_process": {
+      "Job offer without interview or after brief text exchange": 3,
+      "No formal application or background check": 3,
+      "Immediate hiring/start date": 2,
+      "No formal application or background check (requested a picture of a driver's license via email, not a formal background check)": 1,
+      "Extensive 'text interview' instead of a formal interview.": 1
+    },
+    "work_activity": {
+      "Instructed to move money between accounts": 2,
+      "Asked to receive and reship packages to unknown addresses": 2,
+      "Instructed to move money between accounts (transferring funds to a fake vendor)": 1,
+      "Instructed to move money between accounts (depositing a check and then sending funds out).": 1,
+      "Instructions to send money to a third party (likely a money mule task or part of the fake check scam).": 1
+    }
+  },
+  "top_vulnerability_factors": {
+    "Seeking remote/work-from-home opportunities": 7,
+    "Employment desperation (recently unemployed, financial hardship)": 3,
+    "Employment desperation (recently unemployed)": 2,
+    "Seeking remote/work-from-home opportunities (implied by the nature of the scam)": 2,
+    "Limited job search experience (implied by initial belief in the scam and reliance on the scammer's instructions)": 1,
+    "Financial hardship (relying on unemployment funds)": 1,
+    "Seeking remote/work-from-home opportunities (virtual job interview)": 1,
+    "Employment desperation (implied by the immediate embrace of the 'dream job')": 1,
+    "Seeking remote/work-from-home opportunities (implied by initial contact via email for employment).": 1,
+    "Employment desperation (implied by applying for work online and eagerness to start)": 1
+  },
+  "scam_type_distribution": {
+    "Fake Check Scam": 8,
+    "Fake Check/Money Mule Scam": 5,
+    "Fake Check Scam / Money Mule": 3,
+    "Fake Check Scam / Money Mule Scam": 2,
+    "Fake Check / Money Mule Scam": 2,
+    "Fake Job Offer/Money Mule": 1,
+    "Impersonation Scam": 1,
+    "Fake Job Offer with Fake Checks": 1,
+    "Fake Check / Advance Fee Scam": 1,
+    "Fake Job Offer/Check Scam": 1,
+    "Fake Job Offer/Money Mule Scam": 1
+  },
+  "high_risk_complaints": [
+    {
+      "complaint_id": 11258229,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11629506,
+      "risk_score": 98
+    },
+    {
+      "complaint_id": 11310670,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11582419,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11338911,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11576878,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 11913356,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4635636,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5834474,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4516979,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5903957,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5805173,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6504818,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 3604669,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 6419337,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4035380,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 7212558,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 1306236,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 4239683,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5187241,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 9709633,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 8714085,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 1617882,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 2693172,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5788206,
+      "risk_score": 95
+    },
+    {
+      "complaint_id": 5833930,
+      "risk_score": 98
+    }
+  ],
+  "metadata": {
+    "model_name": "gemini-2.5-flash-lite",
+    "run_time_seconds": 76.89947700500488
+  }
+}

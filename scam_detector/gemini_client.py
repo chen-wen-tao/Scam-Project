@@ -12,6 +12,7 @@ from typing import Dict, Any, List, Optional
 from collections import deque
 
 from .prompt_scam_analysis import get_scam_analysis_prompt
+from .prompt_multi_category import get_multi_category_prompt
 from .config import RATE_LIMIT_RPM, RATE_LIMIT_WINDOW, MIN_REQUEST_INTERVAL
 
 logger = logging.getLogger(__name__)
@@ -76,11 +77,11 @@ class GeminiClient:
         genai.configure(api_key=api_key)  # type: ignore[attr-defined]
         self.model, self.model_name = self._initialize_model(model_name)
         
-        # Initialize rate limiter (conservative: 14 RPM for 15 RPM limit)
+        # Initialize rate limiter (very conservative: 12 RPM for 15 RPM free tier limit)
         # Use rate limiting for models that need it
         if 'flash-lite' in self.model_name or '2.5-flash-lite' in self.model_name:
             self.rate_limiter = RateLimiter(RATE_LIMIT_RPM, RATE_LIMIT_WINDOW)
-            logger.info(f"Rate limiter enabled: max {RATE_LIMIT_RPM} requests per {RATE_LIMIT_WINDOW} seconds")
+            logger.info(f"Rate limiter enabled: max {RATE_LIMIT_RPM} requests per {RATE_LIMIT_WINDOW} seconds (free tier limit: 15 RPM)")
         else:
             self.rate_limiter = None
     
@@ -150,73 +151,120 @@ class GeminiClient:
         
         raise ValueError("No compatible Gemini model found. Please check your API key and model availability.")
     
-    def analyze_text(self, text: str, complaint_id: Optional[str] = None) -> Dict[str, Any]:
+    def analyze_text(self, text: str, complaint_id: Optional[str] = None, max_retries: int = 3, prompt_mode: str = 'job_scam') -> Dict[str, Any]:
         """
-        Use Gemini AI to analyze text for scam indicators
+        Use Gemini AI to analyze text for scam indicators with retry logic for rate limits
         
         Args:
             text: Text to analyze
             complaint_id: Optional complaint ID for tracking
+            max_retries: Maximum number of retries for rate limit errors (default: 3)
+            prompt_mode: Prompt mode - 'job_scam' (detailed job scam analysis) or 'multi_category' (4-category classification)
             
         Returns:
             Analysis results from Gemini
         """
-        # Get prompt from prompts module
-        prompt = get_scam_analysis_prompt(text)
+        # Get prompt based on mode
+        if prompt_mode == 'multi_category':
+            prompt = get_multi_category_prompt(text)
+        else:
+            prompt = get_scam_analysis_prompt(text)
         
-        # Apply rate limiting if enabled
-        if self.rate_limiter:
-            self.rate_limiter.wait_if_needed()
-        
-        try:
-            response = self.model.generate_content(prompt)
-            result_text = response.text
-            
-            # Try to extract JSON from response - use more robust extraction
-            # First try to find JSON block (may be wrapped in markdown code blocks)
-            json_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', result_text, re.DOTALL)
-            if not json_match:
-                # Try without code blocks
-                json_match = re.search(r'\{.*\}', result_text, re.DOTALL)
-            
-            if json_match:
-                json_str = json_match.group(1) if json_match.lastindex else json_match.group()
-                try:
-                    return json.loads(json_str)
-                except json.JSONDecodeError as json_err:
-                    logger.warning(f"JSON decode error, trying to fix: {json_err}")
-                    # Log a snippet of the problematic JSON for debugging (first 500 chars)
-                    error_snippet = json_str[max(0, json_err.pos - 50):json_err.pos + 50] if hasattr(json_err, 'pos') else json_str[:500]
-                    logger.debug(f"Problematic JSON snippet: ...{error_snippet}...")
-                    
-                    # Try to fix common JSON issues
-                    fixed_json = self._fix_json_string(json_str)
-                    try:
-                        return json.loads(fixed_json)
-                    except json.JSONDecodeError as fix_err:
-                        logger.error(f"Could not parse JSON even after fixing. Original error: {json_err}. Fix attempt error: {fix_err}")
-                        # Try one more time with a more aggressive fix
-                        try:
-                            # Use json5 or try to extract just the essential fields
-                            return self._extract_json_fields(json_str)
-                        except Exception:
-                            return self._parse_fallback_response(result_text)
-            else:
-                # Fallback parsing
-                return self._parse_fallback_response(result_text)
+        for attempt in range(max_retries):
+            try:
+                # Apply rate limiting if enabled
+                if self.rate_limiter:
+                    self.rate_limiter.wait_if_needed()
                 
-        except Exception as e:
-            logger.error(f"Error analyzing with Gemini: {e}")
-            return {
-                "scam_probability": 0,
-                "red_flags": {},
-                "financial_risk": {"level": "Unknown"},
-                "scam_type": {"primary_category": "Unknown", "subcategory": "Unknown"},
-                "victim_profile": {"risk_level": "Unknown"},
-                "recommendations": {},
-                "confidence": 0,
-                "error": str(e)
-            }
+                response = self.model.generate_content(prompt)
+                result_text = response.text
+                
+                # Try to extract JSON from response - use more robust extraction
+                # First try to find JSON block (may be wrapped in markdown code blocks)
+                json_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', result_text, re.DOTALL)
+                if not json_match:
+                    # Try without code blocks
+                    json_match = re.search(r'\{.*\}', result_text, re.DOTALL)
+                
+                if json_match:
+                    json_str = json_match.group(1) if json_match.lastindex else json_match.group()
+                    try:
+                        return json.loads(json_str)
+                    except json.JSONDecodeError as json_err:
+                        logger.warning(f"JSON decode error, trying to fix: {json_err}")
+                        # Log a snippet of the problematic JSON for debugging (first 500 chars)
+                        error_snippet = json_str[max(0, json_err.pos - 50):json_err.pos + 50] if hasattr(json_err, 'pos') else json_str[:500]
+                        logger.debug(f"Problematic JSON snippet: ...{error_snippet}...")
+                        
+                        # Try to fix common JSON issues
+                        fixed_json = self._fix_json_string(json_str)
+                        try:
+                            return json.loads(fixed_json)
+                        except json.JSONDecodeError as fix_err:
+                            logger.error(f"Could not parse JSON even after fixing. Original error: {json_err}. Fix attempt error: {fix_err}")
+                            # Try one more time with a more aggressive fix
+                            try:
+                                # Use json5 or try to extract just the essential fields
+                                return self._extract_json_fields(json_str)
+                            except Exception:
+                                return self._parse_fallback_response(result_text)
+                else:
+                    # Fallback parsing
+                    return self._parse_fallback_response(result_text)
+                    
+            except Exception as e:
+                error_str = str(e)
+                
+                # Check if it's a rate limit error (429)
+                if "429" in error_str or "quota" in error_str.lower() or "rate limit" in error_str.lower():
+                    # Extract retry delay from error message if available
+                    retry_delay = 15  # Default 15 seconds
+                    retry_match = re.search(r'retry.*?(\d+)\s*seconds?', error_str, re.IGNORECASE)
+                    if retry_match:
+                        retry_delay = int(retry_match.group(1)) + 1  # Add 1 second buffer
+                    
+                    if attempt < max_retries - 1:
+                        logger.warning(f"Rate limit error (attempt {attempt + 1}/{max_retries}): {error_str[:100]}")
+                        logger.info(f"Waiting {retry_delay} seconds before retry...")
+                        time.sleep(retry_delay)
+                        continue  # Retry
+                    else:
+                        logger.error(f"Rate limit error after {max_retries} attempts: {error_str[:100]}")
+                        return {
+                            "scam_probability": 0,
+                            "red_flags": {},
+                            "financial_risk": {"level": "Unknown"},
+                            "scam_type": {"primary_category": "Unknown", "subcategory": "Unknown"},
+                            "victim_profile": {"risk_level": "Unknown"},
+                            "recommendations": {},
+                            "confidence": 0,
+                            "error": f"Rate limit exceeded after {max_retries} retries"
+                        }
+                else:
+                    # Non-rate-limit error - log and return error response
+                    logger.error(f"Error analyzing with Gemini: {e}")
+                    return {
+                        "scam_probability": 0,
+                        "red_flags": {},
+                        "financial_risk": {"level": "Unknown"},
+                        "scam_type": {"primary_category": "Unknown", "subcategory": "Unknown"},
+                        "victim_profile": {"risk_level": "Unknown"},
+                        "recommendations": {},
+                        "confidence": 0,
+                        "error": str(e)
+                    }
+        
+        # Should not reach here, but just in case
+        return {
+            "scam_probability": 0,
+            "red_flags": {},
+            "financial_risk": {"level": "Unknown"},
+            "scam_type": {"primary_category": "Unknown", "subcategory": "Unknown"},
+            "victim_profile": {"risk_level": "Unknown"},
+            "recommendations": {},
+            "confidence": 0,
+            "error": "Unexpected error in analyze_text"
+        }
     
     def _extract_json_fields(self, json_str: str) -> Dict[str, Any]:
         """Extract JSON fields using regex when parsing fails completely"""

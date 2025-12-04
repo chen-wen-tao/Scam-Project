@@ -44,13 +44,14 @@ class JobScamDetector:
         self.file_handler = FileHandler(output_dir)
         self.report_generator = ReportGenerator()
     
-    def analyze_complaint(self, complaint_text: str, complaint_id: Optional[str] = None) -> Dict[str, Any]:
+    def analyze_complaint(self, complaint_text: str, complaint_id: Optional[str] = None, prompt_mode: str = 'job_scam') -> Dict[str, Any]:
         """
         Comprehensive analysis of a single complaint
         
         Args:
             complaint_text: The complaint text to analyze
             complaint_id: Optional complaint ID
+            prompt_mode: Prompt mode - 'job_scam' (detailed analysis) or 'multi_category' (4-category classification)
             
         Returns:
             Complete analysis results
@@ -59,7 +60,7 @@ class JobScamDetector:
         cleaned_text = self.text_processor.preprocess_text(complaint_text)
         
         # Get Gemini analysis - this is the primary and only source of truth
-        gemini_analysis = self.gemini_client.analyze_text(cleaned_text, complaint_id)
+        gemini_analysis = self.gemini_client.analyze_text(cleaned_text, complaint_id, prompt_mode=prompt_mode)
         
         # Extract scam probability directly from Gemini analysis
         scam_probability = gemini_analysis.get('scam_probability', 0)
@@ -75,7 +76,7 @@ class JobScamDetector:
         
         return analysis
     
-    def analyze_dataset(self, csv_file_path: str, output_filename: Optional[str] = None, workers: int = 1) -> pd.DataFrame:
+    def analyze_dataset(self, csv_file_path: str, output_filename: Optional[str] = None, workers: int = 1, prompt_mode: str = 'job_scam') -> pd.DataFrame:
         """
         Analyze a dataset of complaints
         
@@ -108,7 +109,7 @@ class JobScamDetector:
                 complaint_text = row['Consumer complaint narrative']
                 complaint_id = row[complaint_id_col] if complaint_id_col else f"complaint_{idx}"
                 logger.info(f"Analyzing complaint {idx + 1}/{len(df)}: {complaint_id}")
-                return self.analyze_complaint(complaint_text, complaint_id)
+                return self.analyze_complaint(complaint_text, complaint_id, prompt_mode=prompt_mode)
             except Exception as e:
                 logger.error(f"Error analyzing complaint {idx}: {e}")
                 return None

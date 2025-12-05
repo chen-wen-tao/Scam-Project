@@ -112,19 +112,19 @@ class ReportGenerator:
         for analysis in results_df['gemini_analysis']:
             try:
                 # Handle both dict and string representations
-                if isinstance(analysis, str):
+            if isinstance(analysis, str):
                     import json
                     try:
                         analysis = json.loads(analysis)
                     except (json.JSONDecodeError, ValueError):
-                        import ast
+                import ast
                         try:
-                            analysis = ast.literal_eval(analysis)
+                analysis = ast.literal_eval(analysis)
                         except (ValueError, SyntaxError):
                             continue
                 
-                if isinstance(analysis, dict) and 'red_flags' in analysis:
-                    red_flags = analysis['red_flags']
+            if isinstance(analysis, dict) and 'red_flags' in analysis:
+                red_flags = analysis['red_flags']
                     # red_flags should be a dict with categories (aligned with framework)
                     if isinstance(red_flags, dict):
                         # Extract flags by category
@@ -180,18 +180,18 @@ class ReportGenerator:
         for analysis in results_df['gemini_analysis']:
             try:
                 # Handle both dict and string representations
-                if isinstance(analysis, str):
+            if isinstance(analysis, str):
                     import json
                     try:
                         analysis = json.loads(analysis)
                     except (json.JSONDecodeError, ValueError):
-                        import ast
+                import ast
                         try:
-                            analysis = ast.literal_eval(analysis)
+                analysis = ast.literal_eval(analysis)
                         except (ValueError, SyntaxError):
                             continue
                 
-                if isinstance(analysis, dict) and 'scam_type' in analysis:
+            if isinstance(analysis, dict) and 'scam_type' in analysis:
                     scam_type = analysis['scam_type']
                     # scam_type can be a dict or a string
                     if isinstance(scam_type, dict):

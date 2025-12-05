@@ -95,7 +95,7 @@ class FileHandler:
         """Get path to report file"""
         filename = filename or DEFAULT_REPORT_JSON
         return self.output_dir / filename
-    
+
     def save_report_pdf(self, report: dict, results_df=None, filename: Optional[str] = None, model_name: Optional[str] = None, run_time_seconds: Optional[float] = None) -> Path:
         """
         Save analysis report to PDF

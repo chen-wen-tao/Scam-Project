@@ -155,9 +155,9 @@ def main():
                         print(f"    - {flag}: {count} occurrences")
         else:
             # Fallback to overall top flags
-            print("\nTop Red Flags Found:")
-            for flag, count in list(report['top_red_flags'].items())[:5]:
-                print(f"  - {flag}: {count} occurrences")
+        print("\nTop Red Flags Found:")
+        for flag, count in list(report['top_red_flags'].items())[:5]:
+            print(f"  - {flag}: {count} occurrences")
         
         # Top Vulnerability Factors
         vulnerability_factors = report.get('top_vulnerability_factors', {})

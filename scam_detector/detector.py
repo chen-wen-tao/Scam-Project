@@ -177,8 +177,8 @@ class JobScamDetector:
         
         # Save report in requested format(s)
         if output_format in ['json', 'both']:
-            report_path = self.file_handler.save_report_json(report, report_filename)
-            logger.info(f"Report saved to {report_path}")
+        report_path = self.file_handler.save_report_json(report, report_filename)
+        logger.info(f"Report saved to {report_path}")
         
         if output_format in ['pdf', 'both']:
             pdf_path = self.file_handler.save_report_pdf(report, results_df=results_df, filename=report_filename, model_name=model_name, run_time_seconds=run_time_seconds)

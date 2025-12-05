@@ -76,7 +76,7 @@ class GeminiClient:
         
         genai.configure(api_key=api_key)  # type: ignore[attr-defined]
         self.model, self.model_name = self._initialize_model(model_name)
-        
+    
         # Initialize rate limiter (very conservative: 12 RPM for 15 RPM free tier limit)
         # Use rate limiting for models that need it
         if 'flash-lite' in self.model_name or '2.5-flash-lite' in self.model_name:
@@ -168,25 +168,25 @@ class GeminiClient:
         if prompt_mode == 'multi_category':
             prompt = get_multi_category_prompt(text)
         else:
-            prompt = get_scam_analysis_prompt(text)
+        prompt = get_scam_analysis_prompt(text)
         
         for attempt in range(max_retries):
-            try:
+        try:
                 # Apply rate limiting if enabled
                 if self.rate_limiter:
                     self.rate_limiter.wait_if_needed()
                 
-                response = self.model.generate_content(prompt)
-                result_text = response.text
-                
+            response = self.model.generate_content(prompt)
+            result_text = response.text
+            
                 # Try to extract JSON from response - use more robust extraction
                 # First try to find JSON block (may be wrapped in markdown code blocks)
                 json_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', result_text, re.DOTALL)
                 if not json_match:
                     # Try without code blocks
-                    json_match = re.search(r'\{.*\}', result_text, re.DOTALL)
+            json_match = re.search(r'\{.*\}', result_text, re.DOTALL)
                 
-                if json_match:
+            if json_match:
                     json_str = json_match.group(1) if json_match.lastindex else json_match.group()
                     try:
                         return json.loads(json_str)
@@ -208,11 +208,11 @@ class GeminiClient:
                                 return self._extract_json_fields(json_str)
                             except Exception:
                                 return self._parse_fallback_response(result_text)
-                else:
-                    # Fallback parsing
-                    return self._parse_fallback_response(result_text)
-                    
-            except Exception as e:
+            else:
+                # Fallback parsing
+                return self._parse_fallback_response(result_text)
+                
+        except Exception as e:
                 error_str = str(e)
                 
                 # Check if it's a rate limit error (429)
@@ -242,17 +242,17 @@ class GeminiClient:
                         }
                 else:
                     # Non-rate-limit error - log and return error response
-                    logger.error(f"Error analyzing with Gemini: {e}")
-                    return {
-                        "scam_probability": 0,
+            logger.error(f"Error analyzing with Gemini: {e}")
+            return {
+                "scam_probability": 0,
                         "red_flags": {},
                         "financial_risk": {"level": "Unknown"},
                         "scam_type": {"primary_category": "Unknown", "subcategory": "Unknown"},
                         "victim_profile": {"risk_level": "Unknown"},
                         "recommendations": {},
-                        "confidence": 0,
-                        "error": str(e)
-                    }
+                "confidence": 0,
+                "error": str(e)
+            }
         
         # Should not reach here, but just in case
         return {

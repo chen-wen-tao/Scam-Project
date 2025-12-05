@@ -1,7 +1,7 @@
 # Job Scam Detection System - Presentation Insights
 *Generated from evaluation results*
 ---
-## Note
+## Note from Ashley
 The number of labled data should be increased;
 Some of the narrative from CFPB is vague, and even in-complete. As a human, it would be hard for me to distinguish whether it is "pure complaint" or this is an actual scam or job scam.
  
@@ -28,7 +28,7 @@ Some of the narrative from CFPB is vague, and even in-complete. As a human, it w
 - **True Positives (TP)**: 19 - Correctly identified scams
 - **True Negatives (TN)**: 2 - Correctly identified non-scams
 - **False Positives (FP)**: 1 - Non-scams incorrectly flagged
-- **False Negatives (FN)**: 5 - Scams that were missed
+- **False Negatives (FN)**: 5 - Scams that were missed!
 
 ## 3. Error Analysis
 

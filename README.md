@@ -7,11 +7,12 @@ A comprehensive AI-powered system for detecting job scams using Google Gemini LL
 ## Features
 
 - **AI-Powered Analysis**: Uses Google Gemini LLM to analyze text for scam indicators
-- **Prompt Engineering**: Sophisticated prompt design for accurate scam detection
+- **Dual Prompt Modes**: Job scam analysis or multi-category classification (scam_job/scam_other/not_scam_job_relevant/not_scam_irrelevant)
 - **Risk Scoring**: Provides 0-100 risk scores based on Gemini's scam probability
-- **Comprehensive Reporting**: Generates detailed analysis reports with insights
-- **Visualization**: Creates charts and graphs to visualize scam patterns
-- **Batch Processing**: Analyzes large datasets of complaints efficiently
+- **Comprehensive Reporting**: Generates detailed JSON and PDF reports with insights
+- **Model Evaluation**: F1 score, precision, recall, accuracy metrics with threshold optimization
+- **Rate Limiting**: Automatic request throttling to stay within API limits
+- **Batch Processing**: Parallel processing with configurable workers
 
 ## Installation
 
@@ -48,28 +49,27 @@ A comprehensive AI-powered system for detecting job scams using Google Gemini LL
 
 ### Basic Analysis
 
-Run the main analysis script on your dataset:
-
+**Job Scam Analysis** (default mode):
 ```bash
-python main.py --input "data/data-ashley(Sheet1).csv"
+python3 main.py --input "data/data-merged.csv" --output-format both
 ```
 
-**With custom options:**
+**Multi-Category Classification** (for evaluation datasets):
 ```bash
-# Custom output directory
-python3 main.py --input "data/data-ashley.csv" --output-dir detect_res
-
-# Custom filenames
-python main.py --input "data/data-ashley(Sheet1).csv" --results-file ashley_results.csv --report-file ashley_report.json
+python3 main.py --input "data/cfpb-complaints-2025-11-03-12-03.csv" --prompt-mode multi_category --output-format both
 ```
 
-This will:
-- Analyze all complaints in the CSV file using Gemini AI
-- Generate risk scores (0-100) based on scam probability
-- Save results to `detect_res/scam_analysis_results.csv`
-- Create a summary report in `detect_res/scam_analysis_report.json`
+**Options:**
+- `--input`: Path to CSV file (required)
+- `--output-format`: `json`, `pdf`, or `both` (default: `json`)
+- `--prompt-mode`: `job_scam` (default) or `multi_category`
+- `--workers`: Number of parallel workers (default: 1, use 2-3 for faster processing)
+- `--output-dir`: Output directory (default: `detect_res/`)
 
-**Note**: All analysis results are saved in the `detect_res/` folder by default.
+**Output:**
+- `scam_analysis_results.csv`: Detailed analysis per complaint
+- `scam_analysis_report.json`: Summary statistics
+- `scam_analysis_report.pdf`: PDF report (if `--output-format pdf` or `both`)
 
 ### Generate Visualizations
 
@@ -140,16 +140,17 @@ The system relies entirely on AI analysis rather than simple keyword matching, p
 - `scam_analysis_report.json`: Summary statistics and insights
 - `visualizations/`: Charts and graphs (if visualization script is run)
 
-## Risk Scoring
+## Risk Scoring & Thresholds
 
-The risk score is directly based on Gemini's `scam_probability` (0-100), providing a clear assessment:
+The risk score is based on Gemini's `scam_probability` (0-100):
 
-- **0-30**: Low risk (likely legitimate)
-- **31-60**: Medium risk (suspicious, needs review)
-- **61-80**: High risk (likely scam)
-- **81-100**: Very high risk (definite scam)
+- **0-59**: Low risk (predicted as not scam)
+- **60-100**: High risk (predicted as scam)
 
-The score reflects Gemini's confidence in identifying scams, making it a reliable indicator of risk level.
+**Optimal Threshold**: 60 (F1=0.837) for multi-category classification
+- Threshold can be optimized using `test_thresholds.py`
+- Lower threshold = higher recall, lower precision
+- Higher threshold = higher precision, lower recall
 
 ## Example Results
 
@@ -164,11 +165,34 @@ The score reflects Gemini's confidence in identifying scams, making it a reliabl
 }
 ```
 
-## API Usage
+### Model Evaluation
 
-The system uses Google Gemini API. Monitor your usage:
-- Free tier: 15 requests per minute
-- Paid tier: Higher limits available
+Evaluate model performance on labeled data:
+
+```bash
+# Test multiple thresholds to find optimal
+python3 test_thresholds.py --input data/cfpb-complaints-2025-11-03-12-03.csv --thresholds 50 60 70 80 90
+
+# Run full evaluation with optimal threshold (60)
+python3 evaluate_model.py --input data/cfpb-complaints-2025-11-03-12-03.csv --threshold 60 --workers 2
+
+# Generate presentation insights
+python3 generate_presentation_insights.py --threshold 60
+```
+
+**Evaluation Metrics:**
+- Binary classification: Accuracy, Precision, Recall, F1 Score
+- Multi-class classification: Per-category F1 scores
+- Optimal threshold: 60 (F1=0.837) for multi-category prompt
+
+## API Usage & Rate Limiting
+
+The system uses Google Gemini API with automatic rate limiting:
+- **Model**: `gemini-2.5-flash-lite` (prioritized for speed and rate limits)
+- **Rate Limits**: 15 RPM (requests per minute), automatically throttled
+- **Retry Logic**: Automatic retry with exponential backoff for 429 errors
+- **Free Tier**: 15 RPM limit, use `--workers 1` to stay within limits
+- **Rate Limiter**: Thread-safe throttling ensures requests stay under limits
 
 ## Testing
 
@@ -255,10 +279,10 @@ If you get a "model not found" error:
 # Check available models
 python check_models.py
 
-# The system will automatically try different model names:
-# - gemini-1.5-pro (preferred)
-# - gemini-1.5-flash (fallback)
-# - gemini-pro (legacy)
+# The system automatically tries models in priority order:
+# - gemini-2.5-flash-lite (preferred: 15 RPM, fastest)
+# - gemini-2.0-flash-lite (fallback: 30 RPM)
+# - gemini-1.5-flash (legacy fallback)
 ```
 
 ### Performance Tips
@@ -272,34 +296,37 @@ python check_models.py
 The project has been refactored into a modular structure:
 
 ```
-scam_detector/          # Main package
-├── __init__.py        # Package initialization
-├── config.py          # Configuration and constants
-├── detector.py        # Main detector class
-├── text_processor.py  # Text preprocessing and indicators
-├── gemini_client.py   # Gemini API wrapper
-├── prompt_scam_analysis.py  # AI prompt templates
-├── report_generator.py # Report generation
-└── file_handler.py    # File I/O operations
+scam_detector/              # Main package
+├── __init__.py            # Package initialization
+├── config.py              # Configuration and constants
+├── detector.py            # Main detector class
+├── text_processor.py      # Text preprocessing
+├── gemini_client.py       # Gemini API wrapper with rate limiting
+├── prompt_scam_analysis.py      # Job scam analysis prompt
+├── prompt_multi_category.py      # Multi-category classification prompt
+├── report_generator.py    # JSON report generation
+├── pdf_generator.py       # PDF report generation
+└── file_handler.py        # File I/O operations
 
-detect_res/            # Output directory for analysis results
-visualizations/        # Generated visualization charts
-data/                  # Input data files
-main.py               # New entry point (CLI)
-job_scam_detector.py  # Legacy wrapper (backward compatible)
-visualize_results.py  # Visualization script
+evaluation_results/        # Model evaluation outputs
+detect_res/                # Analysis results (CSV, JSON, PDF)
+visualizations/            # Generated charts
+data/                      # Input data files
+main.py                    # CLI entry point
+evaluate_model.py          # Model evaluation script
+test_thresholds.py         # Threshold optimization
+generate_presentation_insights.py  # Presentation report generator
 ```
 
-## Contributing
+## Key Improvements
 
-To improve the system:
-
-1. **Enhance Prompt Engineering**: Improve the Gemini prompt in `scam_detector/prompt_scam_analysis.py` for better detection accuracy
-2. **Add Visualizations**: Create new visualization types in `visualize_results.py`
-3. **Improve Text Processing**: Enhance preprocessing in `scam_detector/text_processor.py`
-4. **Expand Analysis**: Add new analysis dimensions in `scam_detector/report_generator.py`
-
-The system is designed to rely on AI analysis rather than rule-based heuristics, so focus improvements on prompt engineering and model optimization.
+- **JSON RAG Framework**: Classification framework cached for 80% token reduction
+- **Rate Limiting**: Automatic throttling prevents API quota errors
+- **Dual Prompts**: Job scam analysis and multi-category classification
+- **PDF Reports**: Professional reports with model metadata and run time
+- **Model Evaluation**: Comprehensive metrics (F1, precision, recall, accuracy)
+- **Threshold Optimization**: Automated testing to find optimal threshold
+- **Parallel Processing**: Configurable workers for faster batch analysis
 
 ## License
 
